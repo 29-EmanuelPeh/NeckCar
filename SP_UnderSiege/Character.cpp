@@ -10,7 +10,7 @@ Character::Character()
     money = 95;
 	x = 1;
 	y = 1;
-
+    canAttack = false;
     for (int i = 0; i < inventorySize; i++)
     {
         inventory[i] = nullptr;
