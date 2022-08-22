@@ -363,9 +363,12 @@ int main()
 	}
 
 	// LOSE AND WIN CONDITIONS
+	//LOSE
 	if (hero->getHealth() == 0)
 	{
-		std::cout << std::endl << std::endl << "YOU LOSE";
+		std::cout << std::endl << std::endl << "YOU LOSE" << std::endl << std::endl;
+		Sleep(1000);
+		system("pause");
 	}
 
 	return 0;
