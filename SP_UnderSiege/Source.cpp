@@ -94,6 +94,7 @@ int main()
 				if (gameWorld.world[hero->getX() - 1][hero->getY()] == '.')
 				{
 					hero->move(dir);
+					donezo = false;
 				}
 				else
 				{
@@ -105,6 +106,7 @@ int main()
 				if (gameWorld.world[hero->getX() + 1][hero->getY()] == '.')
 				{
 					hero->move(dir);
+					donezo = false;
 				}
 				else
 				{
@@ -115,6 +117,7 @@ int main()
 				if (gameWorld.world[hero->getX()][hero->getY() - 1] == '.')
 				{
 					hero->move(dir);
+					donezo = false;
 				}
 				else
 				{
@@ -125,6 +128,7 @@ int main()
 				if (gameWorld.world[hero->getX()][hero->getY() + 1] == '.')
 				{
 					hero->move(dir);
+					donezo = false;
 				}
 				else
 				{
@@ -140,9 +144,11 @@ int main()
 						if (hero->checkDir(dir, GuardPtr[i]))
 						{
 							hero->attack(GuardPtr[i]);
+							donezo = false;
 						}
 						else
 						{
+							donezo = true;
 							continue;
 						}
 					}
@@ -161,9 +167,11 @@ int main()
 						if (hero->checkDir(dir, GuardPtr[i]))
 						{
 							hero->attack(GuardPtr[i]);
+							donezo = false;
 						}
 						else
 						{
+							donezo = true;
 							continue;
 						}
 					}
@@ -182,9 +190,11 @@ int main()
 						if (hero->checkDir(dir, GuardPtr[i]))
 						{
 							hero->attack(GuardPtr[i]);
+							donezo = false;
 						}
 						else
 						{
+							donezo = true;
 							continue;
 						}
 					}
@@ -203,9 +213,11 @@ int main()
 						if (hero->checkDir(dir, GuardPtr[i]))
 						{
 							hero->attack(GuardPtr[i]);
+							donezo = false;
 						}
 						else
 						{
+							donezo = true;
 							continue;
 						}
 					}
@@ -218,9 +230,9 @@ int main()
 			case 'm':
 				system("CLS");
 				gameWorld.printWorldMap(hero, &menu, GuardPtr[0], GuardPtr[1], GuardPtr[2]);
-
 				std::cout << std::endl << std::endl << std::endl;
 				system("pause");
+				donezo = false;
 				break;
 			case 'e':
 				if (hero->getX() == menu.getX() - 1 && hero->getY() == menu.getY() ||
