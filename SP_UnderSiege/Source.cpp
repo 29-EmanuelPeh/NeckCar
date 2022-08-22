@@ -8,7 +8,7 @@
 
 void slowPrint(std::string textToPrint, int speed)
 {
-	int x = 0;
+	int x = 1;
 	while (textToPrint[x] != '\0')
 	{
 		std::cout << textToPrint[x];
