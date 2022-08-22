@@ -79,15 +79,7 @@ void World::printWorld(Character* player)
 			}
 			else if (player != NULL && world[player->getX() + tempX][player->getY() + tempY] == 'G')
 			{
-				SetConsoleTextAttribute(h, 0x02);
-			}
-			else if (player != NULL && world[player->getX() + tempX][player->getY() + tempY] == 'G')
-			{
-				SetConsoleTextAttribute(h, 0x02);
-			}
-			else if (player != NULL && world[player->getX() + tempX][player->getY() + tempY] == 'G')
-			{
-				SetConsoleTextAttribute(h, 0x02);
+				SetConsoleTextAttribute(h, 0x04);
 			}
 			if (((player->getY() + tempY) >= 0) && 
 				((player->getY() + tempY) <= 100) &&

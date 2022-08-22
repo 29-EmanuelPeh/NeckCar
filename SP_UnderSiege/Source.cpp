@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include "World.h"
 #include "Shop.h"
+#include "Guards.h"
 
 void slowPrint(std::string textToPrint, int speed)
 {
@@ -56,16 +57,15 @@ int main()
 	Shop menu;
 	bool shopOpen = false;
 
-	Character* GuardPtr[3] = { new Character, new Character , new Character };
+	Character* GuardPtr[3] = { new Guards, new Guards , new Guards };
 	//bool donezo = true;
 	int nig2 = 0;
 	int nig = 0;
 	bool hasMoved = false;
 
-	while (true)
+	while (hero->getHealth() != 0)
 	{
 		system("CLS");
-
 		gameWorld.updateWorldPositions(hero, &menu, GuardPtr[0], GuardPtr[1], GuardPtr[2]);
 
 			if (!shopOpen)
@@ -305,7 +305,7 @@ int main()
 							gameWorld.updateWorldPositions(hero, &menu, GuardPtr[0], GuardPtr[1], GuardPtr[2]);
 
 							// checking if the spot is empty
-							if (gameWorld.world[GuardPtr[i]->getX() + nig2][GuardPtr[i]->getY()] != '+' || GuardPtr[i]->getX() + nig2 > 9 || GuardPtr[i]->getX() + nig2 < 0)
+							if (gameWorld.world[GuardPtr[i]->getX() + nig2][GuardPtr[i]->getY()] != '.')
 							{
 								hasMoved = false;
 								continue;
@@ -337,7 +337,7 @@ int main()
 							//updates world positions
 							gameWorld.updateWorldPositions(hero, &menu, GuardPtr[0], GuardPtr[1], GuardPtr[2]);
 
-							if (gameWorld.world[GuardPtr[i]->getX()][GuardPtr[i]->getY() + nig2] != '+' || GuardPtr[i]->getY() + nig2 > 9 || GuardPtr[i]->getY() + nig2 < 0)
+							if (gameWorld.world[GuardPtr[i]->getX()][GuardPtr[i]->getY() + nig2] != '.')
 							{
 								hasMoved = false;
 								continue;
