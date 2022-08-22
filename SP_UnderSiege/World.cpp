@@ -52,7 +52,7 @@ void World::updateWorldPositions(Character* player, Shop* shopLocate, Character*
 	}
 }
 
-void World::printWorld(Character* player, Shop* shopLocate, Character* guard1, Character* guard2, Character* guard3)
+void World::printWorld(Character* player)
 {
 	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
 
@@ -73,19 +73,19 @@ void World::printWorld(Character* player, Shop* shopLocate, Character* guard1, C
 			{
 				SetConsoleTextAttribute(h, 0x02);
 			}
-			else if (world[shopLocate->getX() + tempX][shopLocate->getY() + tempY] == 'S')
+			else if (world[player->getX() + tempX][player->getY() + tempY] == 'S')
 			{
 				SetConsoleTextAttribute(h, 0x01);
 			}
-			else if (guard1 != NULL && world[guard1->getX() + tempX][guard1->getY() + tempY] == 'G')
+			else if (player != NULL && world[player->getX() + tempX][player->getY() + tempY] == 'G')
 			{
 				SetConsoleTextAttribute(h, 0x02);
 			}
-			else if (guard2 != NULL && world[guard2->getX() + tempX][guard2->getY() + tempY] == 'G')
+			else if (player != NULL && world[player->getX() + tempX][player->getY() + tempY] == 'G')
 			{
 				SetConsoleTextAttribute(h, 0x02);
 			}
-			else if (guard3 != NULL && world[guard3->getX() + tempX][guard3->getY() + tempY] == 'G')
+			else if (player != NULL && world[player->getX() + tempX][player->getY() + tempY] == 'G')
 			{
 				SetConsoleTextAttribute(h, 0x02);
 			}
