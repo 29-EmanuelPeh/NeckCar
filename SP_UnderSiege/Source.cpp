@@ -362,6 +362,7 @@ int main()
 					} while (hasMoved == false);
 				}
 			}
+		}
 	}
 	return 0;
 }
