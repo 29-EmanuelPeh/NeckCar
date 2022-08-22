@@ -52,7 +52,7 @@ void World::updateWorldPositions(Character* player, Shop* shopLocate, Character*
 	}
 }
 
-void World::printWorld(Character* player)
+void World::printWorld(Character* player, bool hostile)
 {
 	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
 
@@ -79,7 +79,14 @@ void World::printWorld(Character* player)
 			}
 			else if (player != NULL && world[player->getX() + tempX][player->getY() + tempY] == 'G')
 			{
-				SetConsoleTextAttribute(h, 0x04);
+				if (hostile)
+				{
+					SetConsoleTextAttribute(h, 0x04);
+				}
+				else
+				{
+					SetConsoleTextAttribute(h, 0x08);
+				}
 			}
 			if (((player->getY() + tempY) >= 0) && 
 				((player->getY() + tempY) <= 100) &&
@@ -103,7 +110,7 @@ void World::printWorld(Character* player)
 	}
 }
 
-void World::printWorldMap(Character* player, Shop* shopLocate, Character* guard1, Character* guard2, Character* guard3)
+void World::printWorldMap(Character* player, Shop* shopLocate, bool hostile, Character* guard1, Character* guard2, Character* guard3)
 {
 	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
 
@@ -125,7 +132,14 @@ void World::printWorldMap(Character* player, Shop* shopLocate, Character* guard1
 			}
 			else if (world[x][y] == 'G')
 			{
-				SetConsoleTextAttribute(h, 0x04);
+				if (hostile)
+				{
+					SetConsoleTextAttribute(h, 0x04);
+				}
+				else
+				{
+					SetConsoleTextAttribute(h, 0x08);
+				}
 			}
 
 			std::cout << world[x][y];

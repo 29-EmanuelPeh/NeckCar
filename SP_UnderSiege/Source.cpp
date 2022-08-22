@@ -58,6 +58,7 @@ int main()
 	bool shopOpen = false;
 
 	Character* GuardPtr[3] = { new Guards, new Guards , new Guards };
+	bool hostile = false;
 	//bool donezo = true;
 	int nig2 = 0;
 	int nig = 0;
@@ -70,8 +71,8 @@ int main()
 
 			if (!shopOpen)
 			{
-				gameWorld.printWorld(hero);
-				std::cout << std::endl << std::endl << "What do you want to do?(WASD to move, IJKL to attack, M for map, E to shop, Q to quit): " << std::endl;
+				gameWorld.printWorld(hero, hostile);
+				std::cout << std::endl << std::endl << "What do you want to do?(WASD to move, IJKL to attack, H for hostile TEST, M for map, E to shop, Q to quit): " << std::endl;
 			}
 			else
 			{
@@ -137,7 +138,10 @@ int main()
 					{
 						if (hero->checkDir(dir, GuardPtr[i]))
 						{
-							hero->attack(GuardPtr[i]);
+							if (hostile)
+							{
+								hero->attack(GuardPtr[i]);
+							}
 						}
 						else
 						{
@@ -158,8 +162,10 @@ int main()
 					{
 						if (hero->checkDir(dir, GuardPtr[i]))
 						{
-							hero->attack(GuardPtr[i]);
-							break;
+							if (hostile)
+							{
+								hero->attack(GuardPtr[i]);
+							}
 						}
 						else
 						{
@@ -180,7 +186,10 @@ int main()
 					{
 						if (hero->checkDir(dir, GuardPtr[i]))
 						{
-							hero->attack(GuardPtr[i]);
+							if (hostile)
+							{
+								hero->attack(GuardPtr[i]);
+							}
 						}
 						else
 						{
@@ -201,7 +210,10 @@ int main()
 					{
 						if (hero->checkDir(dir, GuardPtr[i]))
 						{
-							hero->attack(GuardPtr[i]);
+							if (hostile)
+							{
+								hero->attack(GuardPtr[i]);
+							}
 						}
 						else
 						{
@@ -214,9 +226,12 @@ int main()
 					}
 				}
 				break;
+			case 'h':
+				hostile = true;
+				break;
 			case 'm':
 				system("CLS");
-				gameWorld.printWorldMap(hero, &menu, GuardPtr[0], GuardPtr[1], GuardPtr[2]);
+				gameWorld.printWorldMap(hero, &menu, hostile, GuardPtr[0], GuardPtr[1], GuardPtr[2]);
 				std::cout << std::endl << std::endl << std::endl;
 				system("pause");
 				break;
@@ -239,7 +254,6 @@ int main()
 			default:
 				break;
 			}
-		
 
 		//checking guards health
 		for (int i = 0; i < 3; i++)
@@ -276,6 +290,12 @@ int main()
 						break;
 					else
 						continue;
+				}
+
+				// if hostile is false, they will not attack
+				if (hostile == false)
+				{
+					GuardPtr[i]->canAttack = false;
 				}
 
 				if (GuardPtr[i]->canAttack == true)
