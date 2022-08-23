@@ -92,7 +92,7 @@ void World::printWorld(Character* player, bool hostile)
 		{
 			if (world[player->getX() + tempX][player->getY() + tempY] == char(254))
 			{
-				SetConsoleTextAttribute(h, 0x05);
+				SetConsoleTextAttribute(h, 0x08);
 			}
 			else if (world[player->getX() + tempX][player->getY() + tempY] == 2)
 			{
@@ -162,7 +162,7 @@ void World::printWorldMap(Character* player, Shop* shopLocate, bool hostile, Cha
 		{
 			if (world[x][y] == char(254))
 			{
-				SetConsoleTextAttribute(h, 0x05);
+				SetConsoleTextAttribute(h, 0x08);
 			}
 			else if (world[x][y] == 2)
 			{
