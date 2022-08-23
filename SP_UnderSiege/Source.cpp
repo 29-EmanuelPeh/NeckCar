@@ -6,6 +6,7 @@
 #include "World.h"
 #include "Shop.h"
 #include "Guards.h"
+#include "Chest.h"
 
 void slowPrint(std::string textToPrint, int speed)
 {
@@ -56,6 +57,9 @@ int main()
 
 	Shop menu;
 	bool shopOpen = false;
+
+	Chest choo(5,5);
+	
 
 	Character* GuardPtr[3] = { new Guards, new Guards , new Guards };
 	bool hostile = false;
