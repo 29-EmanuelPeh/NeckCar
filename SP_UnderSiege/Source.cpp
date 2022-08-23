@@ -60,23 +60,23 @@ int main()
 
 	Chest choo(5,5);
 	
-
+	std::string chia = "";
 	Character* GuardPtr[3] = { new Guards, new Guards , new Guards };
 	bool hostile = false;
 	//bool donezo = true;
 	int nig2 = 0;
 	int nig = 0;
 	bool hasMoved = false;
-
 	while (hero->getHealth() != 0)
 	{
 		system("CLS");
-		gameWorld.updateWorldPositions(hero, &menu, GuardPtr[0], GuardPtr[1], GuardPtr[2]);
+		gameWorld.updateWorldPositions(hero, &menu, GuardPtr[0], GuardPtr[1], GuardPtr[2], &choo);
 
 			if (!shopOpen)
 			{
 				gameWorld.printWorld(hero, hostile);
 				hero->PrintStat();
+				std::cout << chia << std::endl;
 				std::cout << "What do you want to do?(WASD to move, IJKL to attack, H for hostile TEST, M for map, E to shop, Q to quit): " << std::endl;
 			}
 			else
@@ -252,6 +252,21 @@ int main()
 					)
 				{
 					shopOpen = !shopOpen;
+					menu.ResetShop();
+				}
+				if (hero->getX() == choo.getX() - 1 && hero->getY() == choo.getY() ||
+					hero->getX() == choo.getX() && hero->getY() == choo.getY() + 1 ||
+					hero->getX() == choo.getX() + 1 && hero->getY() == choo.getY() + 1 ||
+					hero->getX() == choo.getX() + 1 && hero->getY() == choo.getY() - 1 ||
+					hero->getX() == choo.getX() - 1 && hero->getY() == choo.getY() + 1 ||
+					hero->getX() == choo.getX() - 1 && hero->getY() == choo.getY() - 1 ||
+					hero->getX() == choo.getX() && hero->getY() == choo.getY() - 1 ||
+					hero->getX() == choo.getX() + 1 && hero->getY() == choo.getY()
+					)
+				{
+					int monei = choo.open();
+					hero->getMoney() += monei;
+					chia = "You opened a choo chest! You have earned " + std::to_string(monei) + "credits";
 				}
 				break;
 			case 'q':
@@ -328,7 +343,7 @@ int main()
 							} while (nig2 == 0);
 
 							//updates the world positions
-							gameWorld.updateWorldPositions(hero, &menu, GuardPtr[0], GuardPtr[1], GuardPtr[2]);
+							gameWorld.updateWorldPositions(hero, &menu, GuardPtr[0], GuardPtr[1], GuardPtr[2], &choo);
 
 							// checking if the spot is empty
 							if (gameWorld.world[GuardPtr[i]->getX() + nig2][GuardPtr[i]->getY()] != '.')
@@ -361,7 +376,7 @@ int main()
 							} while (nig2 == 0);
 
 							//updates world positions
-							gameWorld.updateWorldPositions(hero, &menu, GuardPtr[0], GuardPtr[1], GuardPtr[2]);
+							gameWorld.updateWorldPositions(hero, &menu, GuardPtr[0], GuardPtr[1], GuardPtr[2], &choo);
 
 							if (gameWorld.world[GuardPtr[i]->getX()][GuardPtr[i]->getY() + nig2] != '.')
 							{

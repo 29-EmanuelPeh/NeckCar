@@ -3,6 +3,7 @@
 #include <iostream>
 #include <windows.h>
 
+
 World::World()
 {
 	for (int x = 0; x < 101; x++)
@@ -14,7 +15,7 @@ World::World()
 	}
 }
 
-void World::updateWorldPositions(Character* player, Shop* shopLocate, Character* guard1, Character* guard2, Character* guard3)
+void World::updateWorldPositions(Character* player, Shop* shopLocate, Character* guard1, Character* guard2, Character* guard3, Chest* chest)
 {
 	/*if (guard1->getHealth() <= 0)
 	{
@@ -55,6 +56,10 @@ void World::updateWorldPositions(Character* player, Shop* shopLocate, Character*
 			else if (guard3 != NULL && x == guard3->getX() && y == guard3->getY())
 			{
 				world[x][y] = 'G';
+			}
+			else if (x == chest->getX() && y == chest->getY())
+			{
+				world[x][y] = chest->getchestIcon();
 			}
 			else 
 			{

@@ -31,11 +31,11 @@ void Shop::printMenu(int &money)
 	std::cout << "*************************************************************************************" << std::endl;
 	std::cout << "*" << "                                        Shop                                      " << " * " << std::endl;
 	std::cout << "*" << "                                        ----                                      " << " * " << std::endl;
-	std::cout << "*" << "     Pew: (1) 40                                                                  " << " * " << std::endl;
+	std::cout << "*" << "     (1) Weapon:  40 credits                                                      " << " * " << std::endl;
 	std::cout << "*" << "                                                                                  " << " * " << std::endl;
-	std::cout << "*" << "     Knights Armor: (2) 50                                                        " << " * " << std::endl;
+	std::cout << "*" << "     (2) Knights Armor: 50 credits                                                " << " * " << std::endl;
 	std::cout << "*" << "                                                                                  " << " * " << std::endl;
-	std::cout << "*" << "     Elixir: (3) 10                                                               " << " * " << std::endl;
+	std::cout << "*" << "     (3) Elixir:  10 credits                                                      " << " * " << std::endl;
 	std::cout << "*" << "                                                                                  " << " * " << std::endl;
 	std::cout << "*" << "                                                                                  " << " * " << std::endl;
 	std::cout << "*" << "                                                                                  " << " * " << std::endl;;
@@ -54,6 +54,11 @@ void Shop::printMenu(int &money)
 		std::cout << buffer[j];
 	}
 	std::cout << std::endl;
+}
+
+void Shop::ResetShop()
+{
+	buffer = "Welcome to URAYA. What would you like to purchase? 1 - Weapon |  2 - Knights Armor | 3 - Elixir";
 }
 
 Object* Shop::buy(int number, int &money)
