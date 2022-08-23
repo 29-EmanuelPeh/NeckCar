@@ -439,7 +439,10 @@ int main()
 		}
 	}
 
+	system("CLS");
 	gameWorld.updateWorldPositions(hero, &menu, EnemyPtr[0], EnemyPtr[1], EnemyPtr[2], &choo, EnemyPtr[3], EnemyPtr[4]);
+	gameWorld.printWorld(hero, hostile);
+	hero->PrintStat();
 
 	// LOSE AND WIN CONDITIONS
 	//LOSE
