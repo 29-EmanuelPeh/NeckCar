@@ -161,7 +161,6 @@ void World::printWorldMap(Character* player, Shop* shopLocate, bool hostile, Cha
 					SetConsoleTextAttribute(h, 0x08);
 				}
 			}
-
 			std::cout << world[x][y];
 			SetConsoleTextAttribute(h, 0x0f);
 		}
