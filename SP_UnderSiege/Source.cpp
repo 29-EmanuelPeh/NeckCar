@@ -68,6 +68,7 @@ int main()
 	int nig2 = 0;
 	int nig = 0;
 	bool hasMoved = false;
+	int BossSteps = 1;
 
 	while (hero->getHealth() != 0)
 	{
@@ -345,8 +346,6 @@ int main()
 
 					if (EnemyPtr[i]->canAttack == true)
 						break;
-					else
-						continue;
 				}
 
 				// if hostile is false, they will not attack
@@ -362,78 +361,148 @@ int main()
 				}
 				else
 				{
-					// if no player near to attack, try to move
-					do
+					// check if its guards or bosses
+					if (i < 3)
 					{
-						//randomizing whether to move X or Y
-						nig = rand() % 2;
-
-						// X chosen
-						if (nig == 0)
+						// if no player near to attack, try to move
+						do
 						{
-							// randomizes to move +1 or -1
-							do
+							//randomizing whether to move X or Y
+							nig = rand() % 2;
+
+							// X chosen
+							if (nig == 0)
 							{
-								nig2 = (rand() % 3) - 1;
+								// randomizes to move +1 or -1
+								do
+								{
+									nig2 = (rand() % 3) - 1;
 
-							} while (nig2 == 0);
+								} while (nig2 == 0);
 
+								//updates the world positions
+								gameWorld.updateWorldPositions(hero, &menu, EnemyPtr[0], EnemyPtr[1], EnemyPtr[2], &choo, EnemyPtr[3], EnemyPtr[4]);
+
+								// checking if the spot is empty
+								if (gameWorld.world[EnemyPtr[i]->getX() + nig2][EnemyPtr[i]->getY()] != '.')
+								{
+									hasMoved = false;
+									continue;
+								}
+								else
+								{
+									if (nig2 == 1)
+									{
+										EnemyPtr[i]->move('s');
+										hasMoved = true;
+									}
+									else
+									{
+										EnemyPtr[i]->move('w');
+										hasMoved = true;
+									}
+								}
+							}
+							// Y chosen
+							else
+							{
+								// randomizes to move +1 or -1
+								do
+								{
+									nig2 = (rand() % 3) - 1;
+
+								} while (nig2 == 0);
+
+								//updates world positions
+								gameWorld.updateWorldPositions(hero, &menu, EnemyPtr[0], EnemyPtr[1], EnemyPtr[2], &choo, EnemyPtr[3], EnemyPtr[4]);
+
+								if (gameWorld.world[EnemyPtr[i]->getX()][EnemyPtr[i]->getY() + nig2] != '.')
+								{
+									hasMoved = false;
+									continue;
+								}
+								else
+								{
+									if (nig2 == 1)
+									{
+										EnemyPtr[i]->move('d');
+										hasMoved = true;
+									}
+									else
+									{
+										EnemyPtr[i]->move('a');
+										hasMoved = true;
+									}
+								}
+							}
+						} while (hasMoved == false);
+					}
+					// if its bosses
+					else
+					{
+						if (BossSteps % 2 == 0)
+						{
 							//updates the world positions
 							gameWorld.updateWorldPositions(hero, &menu, EnemyPtr[0], EnemyPtr[1], EnemyPtr[2], &choo, EnemyPtr[3], EnemyPtr[4]);
 
-							// checking if the spot is empty
-							if (gameWorld.world[EnemyPtr[i]->getX() + nig2][EnemyPtr[i]->getY()] != '.')
-							{
-								hasMoved = false;
-								continue;
-							}
-							else
-							{
-								if (nig2 == 1)
-								{
-									EnemyPtr[i]->move('s');
-									hasMoved = true;
-								}
-								else
-								{
-									EnemyPtr[i]->move('w');
-									hasMoved = true;
-								}
-							}
-						}
-						// Y chosen
-						else
-						{
-							// randomizes to move +1 or -1
+							bool Moved = false;
+
 							do
 							{
-								nig2 = (rand() % 3) - 1;
-
-							} while (nig2 == 0);
-
-							//updates world positions
-							gameWorld.updateWorldPositions(hero, &menu, EnemyPtr[0], EnemyPtr[1], EnemyPtr[2], &choo, EnemyPtr[3], EnemyPtr[4]);
-
-							if (gameWorld.world[EnemyPtr[i]->getX()][EnemyPtr[i]->getY() + nig2] != '.')
-							{
-								hasMoved = false;
-								continue;
-							}
-							else
-							{
-								if (nig2 == 1)
+								if ((EnemyPtr[i]->getX() < hero->getX()) && (gameWorld.world[EnemyPtr[i]->getX() + 1][EnemyPtr[i]->getY()] == '.'))
+								{
+									EnemyPtr[i]->move('s');
+									Moved = true;
+									if (i == 4)
+									{
+										BossSteps++;
+									}
+								}
+								else if ((EnemyPtr[i]->getX() > hero->getX()) && (gameWorld.world[EnemyPtr[i]->getX() - 1][EnemyPtr[i]->getY()] == '.'))
+								{
+									EnemyPtr[i]->move('w');
+									Moved = true;
+									if (i == 4)
+									{
+										BossSteps++;
+									}
+								}
+								else if ((EnemyPtr[i]->getY() > hero->getY()) && (gameWorld.world[EnemyPtr[i]->getX()][EnemyPtr[i]->getY() - 1] == '.'))
+								{
+									EnemyPtr[i]->move('a');
+									Moved = true;
+									if (i == 4)
+									{
+										BossSteps++;
+									}
+								}
+								else if ((EnemyPtr[i]->getY() < hero->getY()) && (gameWorld.world[EnemyPtr[i]->getX()][EnemyPtr[i]->getY() + 1] == '.'))
 								{
 									EnemyPtr[i]->move('d');
-									hasMoved = true;
+									Moved = true;
+									if (i == 4)
+									{
+										BossSteps++;
+									}
 								}
 								else
 								{
-									EnemyPtr[i]->move('a');
-									hasMoved = true;
+									Moved = true;
+									if (i == 4)
+									{
+										BossSteps++;
+									}
 								}
+							} while (!Moved);
+						}
+						else
+						{
+							if (i == 4)
+							{
+								BossSteps++;
 							}
 						}
-					} while (hasMoved == false);
+					}
 				}
 			}
 		}
