@@ -72,7 +72,8 @@ int main()
 			if (!shopOpen)
 			{
 				gameWorld.printWorld(hero, hostile);
-				std::cout << std::endl << std::endl << "What do you want to do?(WASD to move, IJKL to attack, H for hostile TEST, M for map, E to shop, Q to quit): " << std::endl;
+				hero->PrintStat();
+				std::cout << "What do you want to do?(WASD to move, IJKL to attack, H for hostile TEST, M for map, E to shop, Q to quit): " << std::endl;
 			}
 			else
 			{

@@ -15,6 +15,7 @@ protected:
 public:
 	Character();
 
+	void PrintStat(void);
 	bool canAttack;
 	int getX();
 	void setX();
