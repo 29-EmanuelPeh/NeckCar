@@ -30,8 +30,8 @@ int main()
 	HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
 	GetCurrentConsoleFontEx(hOut, 0, &fontex);
 	fontex.FontWeight = 700;
-	fontex.dwFontSize.X = 30;
-	fontex.dwFontSize.Y = 30;
+	fontex.dwFontSize.X = 20;
+	fontex.dwFontSize.Y = 20;
 	SetCurrentConsoleFontEx(hOut, NULL, &fontex);
 
 	//SetConsoleDisplayMode(GetStdHandle(STD_OUTPUT_HANDLE), CONSOLE_FULLSCREEN_MODE, 0);

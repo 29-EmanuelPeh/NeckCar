@@ -29,52 +29,75 @@ void World::updateWorldPositions(Character* player, Shop* shopLocate, Character*
 	{
 		kill(guard3);
 	}*/
-	for (int x = 0; x < 101; x++)
+for (int x = 0; x < 101; x++)
+{
+	for (int y = 0; y < 101; y++)
 	{
-		for (int y = 0; y < 101; y++)
+		if (x == 0 || x == 100 || y == 0 || y == 100
+			|| (x == 5 && (y == 9 || y == 10 || y == 11 || y == 12 || y == 13 || y == 14 || y == 15 || y == 16 || y == 17 || y == 18 || y == 19 || y == 30 || y == 31 || y == 32 || y == 33 || y == 34 || y == 35 || y == 36 || y == 37 || y == 38 || y == 39 || y == 40))
+			|| (x == 6 && (y == 9 || y == 10 || y == 11 || y == 12 || y == 13 || y == 14 || y == 15 || y == 16 || y == 17 || y == 18 || y == 19 || y == 30 || y == 31 || y == 32 || y == 33 || y == 34 || y == 35 || y == 36 || y == 37 || y == 38 || y == 39 || y == 40))
+			|| (x == 7 && (y == 9 || y == 10 || y == 11 || y == 12 || y == 13 || y == 14 || y == 15 || y == 16 || y == 17 || y == 18 || y == 19 || y == 30 || y == 31 || y == 32 || y == 33 || y == 34 || y == 35 || y == 36 || y == 37 || y == 38 || y == 39 || y == 40))
+			|| (x == 8 && (y == 9 || y == 10 || y == 11 || y == 12 || y == 13 || y == 14 || y == 15 || y == 16 || y == 17 || y == 18 || y == 19 || y == 30 || y == 31 || y == 32 || y == 33 || y == 34 || y == 35 || y == 36 || y == 37 || y == 38 || y == 39 || y == 40))
+			|| (x == 9 && (y == 9 || y == 10 || y == 11 || y == 12 || y == 13 || y == 14 || y == 15 || y == 16 || y == 17 || y == 18 || y == 19 || y == 30 || y == 31 || y == 32 || y == 33 || y == 34 || y == 35 || y == 36 || y == 37 || y == 38 || y == 39 || y == 40))
+			|| (x == 40 && (y == 9 || y == 10 || y == 11 || y == 12 || y == 13 || y == 14 || y == 15 || y == 16 || y == 17 || y == 18 || y == 19 || y == 30 || y == 31 || y == 32 || y == 33 || y == 34 || y == 35 || y == 36 || y == 37 || y == 38 || y == 39 || y == 40))
+			|| (x == 41 && (y == 9 || y == 10 || y == 11 || y == 12 || y == 13 || y == 14 || y == 15 || y == 16 || y == 17 || y == 18 || y == 19 || y == 30 || y == 31 || y == 32 || y == 33 || y == 34 || y == 35 || y == 36 || y == 37 || y == 38 || y == 39 || y == 40))
+			|| (x == 42 && (y == 9 || y == 10 || y == 11 || y == 12 || y == 13 || y == 14 || y == 15 || y == 16 || y == 17 || y == 18 || y == 19 || y == 30 || y == 31 || y == 32 || y == 33 || y == 34 || y == 35 || y == 36 || y == 37 || y == 38 || y == 39 || y == 40))
+			|| (x == 43 && (y == 9 || y == 10 || y == 11 || y == 12 || y == 13 || y == 14 || y == 15 || y == 16 || y == 17 || y == 18 || y == 19 || y == 30 || y == 31 || y == 32 || y == 33 || y == 34 || y == 35 || y == 36 || y == 37 || y == 38 || y == 39 || y == 40))
+			|| (x == 44 && (y == 9 || y == 10 || y == 11 || y == 12 || y == 13 || y == 14 || y == 15 || y == 16 || y == 17 || y == 18 || y == 19 || y == 30 || y == 31 || y == 32 || y == 33 || y == 34 || y == 35 || y == 36 || y == 37 || y == 38 || y == 39 || y == 40))
+			|| (x == 22 && (y == 9 || y == 10 || y == 11 || y == 12 || y == 37 || y == 38 || y == 39 || y == 40))
+			|| (x == 23 && (y == 22 || y == 23 || y == 24 || y == 25 || y == 26 || y == 9 || y == 10 || y == 11 || y == 12 || y == 37 || y == 38 || y == 39 || y == 40))
+			|| (x == 24 && (y == 21 || y == 27 || y == 9 || y == 10 || y == 11 || y == 12 || y == 37 || y == 38 || y == 39 || y == 40))
+			|| (x == 25 && (y == 21 || y == 27 || y == 9 || y == 10 || y == 11 || y == 12 || y == 37 || y == 38 || y == 39 || y == 40))
+			|| (x == 26 && (y == 21 || y == 27 || y == 9 || y == 10 || y == 11 || y == 12 || y == 37 || y == 38 || y == 39 || y == 40))
+			|| (x == 27 && (y == 22 || y == 23 || y == 24 || y == 25 || y == 26 || y == 9 || y == 10 || y == 11 || y == 12 || y == 37 || y == 38 || y == 39 || y == 40))
+			|| (x == 28 && (y == 9 || y == 10 || y == 11 || y == 12 || y == 37 || y == 38 || y == 39 || y == 40)))
 		{
-			if (x == 0 || x == 100 || y == 0 || y == 100 || x == 50 && (y == 40 || y == 41 || y == 42 || y == 43))
-			{
-				world[x][y] = char(254);
-			}
-			else if (x == player->getX() && y == player->getY())
-			{
-				world[x][y] = 2;
-			}
-			else if (x == shopLocate->getX() && y == shopLocate->getY())
-			{
-				world[x][y] = char(36);
-			}
-			else if (guard1 != NULL && x == guard1->getX() && y == guard1->getY())
-			{
-				world[x][y] = 'G';
-			}
-			else if (guard2 != NULL && x == guard2->getX() && y == guard2->getY())
-			{
-				world[x][y] = 'G';
-			}
-			else if (guard3 != NULL && x == guard3->getX() && y == guard3->getY())
-			{
-				world[x][y] = 'G';
-			}
-			else if (x == chest->getX() && y == chest->getY())
-			{
-				world[x][y] = chest->getchestIcon();
-			}
-			else if (x == miniboss->getX() && y == miniboss->getY())
-			{
-				world[x][y] = 'M';
-			}
-			else if (x == boss->getX() && y == boss->getY())
-			{
-				world[x][y] = char(225);
-			}
-			else 
-			{
-				world[x][y] = '.';
-			}
+			world[x][y] = char(254);
+		}
+		else if ((x == 24 && (y == 22 || y == 23 || y == 24 || y == 25 || y == 26))
+			|| (x == 25 && (y == 22 || y == 23 || y == 24 || y == 25 || y == 26))
+			|| (x == 26 && (y == 22 || y == 23 || y == 24 || y == 25 || y == 26)))
+		{
+			world[x][y] = char(176);
+		}
+		else if (x == player->getX() && y == player->getY())
+		{
+			world[x][y] = 2;
+		}
+		else if (x == shopLocate->getX() && y == shopLocate->getY())
+		{
+			world[x][y] = char(36);
+		}
+		else if (guard1 != NULL && x == guard1->getX() && y == guard1->getY())
+		{
+			world[x][y] = 'G';
+		}
+		else if (guard2 != NULL && x == guard2->getX() && y == guard2->getY())
+		{
+			world[x][y] = 'G';
+		}
+		else if (guard3 != NULL && x == guard3->getX() && y == guard3->getY())
+		{
+			world[x][y] = 'G';
+		}
+		else if (x == chest->getX() && y == chest->getY())
+		{
+			world[x][y] = chest->getchestIcon();
+		}
+		else if (x == miniboss->getX() && y == miniboss->getY())
+		{
+			world[x][y] = 'M';
+		}
+		else if (x == boss->getX() && y == boss->getY())
+		{
+			world[x][y] = char(225);
+		}
+		else
+		{
+			world[x][y] = '.';
 		}
 	}
+}
 }
 
 void World::printWorld(Character* player, bool hostile)
@@ -94,6 +117,10 @@ void World::printWorld(Character* player, bool hostile)
 			{
 				SetConsoleTextAttribute(h, 0x08);
 			}
+			else if (world[player->getX() + tempX][player->getY() + tempY] == char(176))
+			{
+				SetConsoleTextAttribute(h, 0x0B);
+			}
 			else if (world[player->getX() + tempX][player->getY() + tempY] == 2)
 			{
 				SetConsoleTextAttribute(h, 0x02);
@@ -112,6 +139,10 @@ void World::printWorld(Character* player, bool hostile)
 				{
 					SetConsoleTextAttribute(h, 0x08);
 				}
+			}
+			else if (world[player->getX() + tempX][player->getY() + tempY] == 'C')
+			{
+				SetConsoleTextAttribute(h, 0x0E);
 			}
 			else if (world[player->getX() + tempX][player->getY() + tempY] == 'M')
 			{
@@ -164,6 +195,10 @@ void World::printWorldMap(Character* player, Shop* shopLocate, bool hostile, Cha
 			{
 				SetConsoleTextAttribute(h, 0x08);
 			}
+			else if (world[x][y] == char(176))
+			{
+				SetConsoleTextAttribute(h, 0x0B);
+			}
 			else if (world[x][y] == 2)
 			{
 				SetConsoleTextAttribute(h, 0x02);
@@ -183,6 +218,10 @@ void World::printWorldMap(Character* player, Shop* shopLocate, bool hostile, Cha
 					SetConsoleTextAttribute(h, 0x08);
 				}
 			}
+			else if (world[x][y] == 'C')
+			{
+				SetConsoleTextAttribute(h, 0x0E);
+			}
 			else if (world[x][y] == 'M')
 			{
 				SetConsoleTextAttribute(h, 0x06);
@@ -191,7 +230,7 @@ void World::printWorldMap(Character* player, Shop* shopLocate, bool hostile, Cha
 			{
 				SetConsoleTextAttribute(h, 0x0C);
 			}
-			std::cout << world[x][y];
+			std::cout << world[x][y] << ' ';
 			SetConsoleTextAttribute(h, 0x0f);
 		}
 		std::cout << std::endl;
