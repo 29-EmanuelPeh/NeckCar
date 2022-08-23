@@ -2,8 +2,8 @@
 
 Boss::Boss()
 {
-	health = 1000;
+	health = 200;
 	damage = 10;
-	x = 11;
+	x = 1;
 	y = 9;
 }

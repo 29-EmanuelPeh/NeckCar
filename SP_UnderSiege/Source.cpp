@@ -60,7 +60,7 @@ int main()
 	Shop menu;
 	bool shopOpen = false;
 
-	Chest choo(5,5);
+	Chest choo(1,2);
 	
 	Character* EnemyPtr[5] = { new Guards, new Guards , new Guards, new MiniBoss, new Boss };
 	bool hostile = false;

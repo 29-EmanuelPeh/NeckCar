@@ -48,9 +48,9 @@ int Character::getX()
 	return x;
 }
 
-void Character::setX()
+void Character::setX(int px)
 {
-
+    x = px;
 }
 
 int Character::getY()
@@ -58,8 +58,9 @@ int Character::getY()
 	return y;
 }
 
-void Character::setY()
+void Character::setY(int py)
 {
+    y = py;
 }
 
 int Character::getHealth()

@@ -18,9 +18,9 @@ public:
 	void PrintStat(void);
 	bool canAttack;
 	int getX();
-	void setX();
+	void setX(int px);
 	int getY();
-	void setY();
+	void setY(int py);
 	int getHealth();
 	void setHealth(int h);
 	int getDamage();

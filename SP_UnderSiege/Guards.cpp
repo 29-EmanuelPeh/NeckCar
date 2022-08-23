@@ -3,9 +3,9 @@
 Guards::Guards()
 {
 	health = 10;
-	damage = 10;
-	x = 2;
-	y = 2;
+	damage = 5;
+	x = 1;
+	y = 4;
 }
 
 int Guards::getWorth()

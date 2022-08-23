@@ -8,8 +8,8 @@
 
 Shop::Shop()
 {
-	x = 10;
-	y = 10;
+	x = 1;
+	y = 4;
 	accessory = new Object*[shopCapacity];
 	accessory[0] = new Weapon;
 	accessory[1] = new Armor;

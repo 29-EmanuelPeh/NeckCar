@@ -9,7 +9,9 @@ private:
 public:
 	Chest(int xpos, int ypos);
 	int getX();
+	void setX(int px);
 	int getY();
+	void setY(int py);
 	char getchestIcon();
 	int open();
 };
