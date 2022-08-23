@@ -125,17 +125,17 @@ void World::printWorld(Character* player, bool hostile)
 void World::printWorldMap(Character* player, Shop* shopLocate, bool hostile, Character* guard1, Character* guard2, Character* guard3)
 {
 	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
-	std::cout << "-----------------------------" << std::endl;
-	std::cout << "|" << " " << "Legend:" << "                   " << "|" << std::endl;
-	std::cout << "|" << "        ->" <<" Player (YOU)" << "   " << "|" << std::endl;
-	std::cout << "|" << "        ->" << "(G)uards" << "         " << "|" << std::endl;
-	std::cout << "|" << "        ->" << "(S)hop" << "           " << "|" << std::endl;
-	std::cout << "|" << "        ->" << "(C)hest"<< "          " << "|" << std::endl;
-	std::cout << "|" << "        ->" << "(M)iniboss" << "       "<< "|" << std::endl;
-	std::cout << "|" << "        ->" << "(B)oss" << "           " << "|" << std::endl;
+	std::cout << "Legend:" << "                     |" << std::endl;
+	std::cout << char(2) << "-> Player(YOU)" << "             |" << std::endl;
+	std::cout << "G" << "->Guards" << "                   |" << std::endl;
+	std::cout << char(36) << "->Shop" << "                     |" << std::endl;
+	std::cout << "C" << "->Chest" << "                    |" << std::endl; 
+	std::cout << "M" << "->Miniboss" << "                 |" << std::endl;
+	std::cout << "B" << "->Boss" << "                     |" << std::endl; 
 	std::cout << "-----------------------------" << std::endl;
    	for (size_t x = 0; x < 101; x++)
 	{
+		// 2 Shop - 36
 		for (size_t y = 0; y < 101; y++)
 		{
 			if (world[x][y] == char(254))
