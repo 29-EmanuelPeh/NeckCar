@@ -16,6 +16,18 @@ World::World()
 
 void World::updateWorldPositions(Character* player, Shop* shopLocate, Character* guard1, Character* guard2, Character* guard3)
 {
+	/*if (guard1->getHealth() <= 0)
+	{
+		kill(guard1);
+	}
+	if (guard2->getHealth() <= 0)
+	{
+		kill(guard2);
+	}
+	if (guard3->getHealth() <= 0)
+	{
+		kill(guard3);
+	}*/
 	for (int x = 0; x < 101; x++)
 	{
 		for (int y = 0; y < 101; y++)
@@ -148,6 +160,7 @@ void World::printWorldMap(Character* player, Shop* shopLocate, bool hostile, Cha
 		std::cout << std::endl;
 	}
 }
+
 
 World::~World()
 {

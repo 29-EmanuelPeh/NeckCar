@@ -7,3 +7,8 @@ Guards::Guards()
 	x = 2;
 	y = 2;
 }
+
+int Guards::getWorth()
+{
+	return worth;
+}

@@ -7,7 +7,7 @@ Character::Character()
 	health = 100;
 	damage = 5;
 	range = 1;
-    money = 95;
+    money = 0;
 	x = 1;
 	y = 1;
     canAttack = false;
