@@ -145,6 +145,7 @@
     <ClCompile Include="Chest.cpp" />
     <ClCompile Include="Elixir.cpp" />
     <ClCompile Include="Guards.cpp" />
+    <ClCompile Include="MiniBoss.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Shop.cpp" />
     <ClCompile Include="Source.cpp" />
@@ -158,6 +159,7 @@
     <ClInclude Include="Chest.h" />
     <ClInclude Include="Elixir.h" />
     <ClInclude Include="Guards.h" />
+    <ClInclude Include="MiniBoss.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Shop.h" />
     <ClInclude Include="Weapon.h" />

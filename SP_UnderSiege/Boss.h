@@ -1,16 +1,9 @@
 #pragma once
-class Boss
+#include "Character.h"
+
+class Boss : public Character
 {
-protected:
-	int Health;
-	int Damage;
-	int x;
-	int y;
 public:
 	Boss();
-
-	int getX();
-	int getY();
-	void attack(int worldX, int worldY);
 };
 

@@ -60,7 +60,6 @@ int main()
 
 	Chest choo(5,5);
 	
-	std::string chia = "";
 	Character* GuardPtr[3] = { new Guards, new Guards , new Guards };
 	bool hostile = false;
 	//bool donezo = true;
@@ -76,8 +75,7 @@ int main()
 			{
 				gameWorld.printWorld(hero, hostile);
 				hero->PrintStat();
-				std::cout << chia << std::endl;
-				std::cout << "What do you want to do?(WASD to move, IJKL to attack, H for hostile TEST, M for map, E to shop, Q to quit): " << std::endl;
+				std::cout << "What do you want to do?(WASD to move, IJKL to attack, M for map, E to shop, Q to quit): " << std::endl;
 			}
 			else
 			{
@@ -266,7 +264,8 @@ int main()
 				{
 					int monei = choo.open();
 					hero->getMoney() += monei;
-					chia = "You opened a choo chest! You have earned " + std::to_string(monei) + "credits";
+					std::cout << "You opened a choo chest! You have earned " + std::to_string(monei) + "credits" << std::endl;
+					system("pause");
 				}
 				break;
 			case 'q':
@@ -402,6 +401,8 @@ int main()
 			}
 		}
 	}
+
+	gameWorld.updateWorldPositions(hero, &menu, GuardPtr[0], GuardPtr[1], GuardPtr[2], &choo);
 
 	// LOSE AND WIN CONDITIONS
 	//LOSE

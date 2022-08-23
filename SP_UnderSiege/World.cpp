@@ -125,7 +125,7 @@ void World::printWorld(Character* player, bool hostile)
 		std::cout << std::endl;
 		tempX++;
 	}
-	std::cout << std::endl << std::endl;
+	std::cout << std::endl;
 }
 
 void World::printWorldMap(Character* player, Shop* shopLocate, bool hostile, Character* guard1, Character* guard2, Character* guard3)

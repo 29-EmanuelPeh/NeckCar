@@ -19,7 +19,7 @@ Character::Character()
 
 void Character::PrintStat(void)
 {
-    std::cout << "Player HP: " << health << "  AttackPt: " << damage << std::endl << std::endl;
+    std::cout << "Player HP: " << health << "  AttackPt: " << damage << std::endl;
 }
 
 void Character::addInventory(Object* object)
