@@ -7,6 +7,8 @@
 #include "Shop.h"
 #include "Guards.h"
 #include "Chest.h"
+#include "Boss.h"
+#include "MiniBoss.h"
 
 void slowPrint(std::string textToPrint, int speed)
 {
@@ -32,7 +34,7 @@ int main()
 	fontex.dwFontSize.Y = 30;
 	SetCurrentConsoleFontEx(hOut, NULL, &fontex);
 
-	SetConsoleDisplayMode(GetStdHandle(STD_OUTPUT_HANDLE), CONSOLE_FULLSCREEN_MODE, 0);
+	//SetConsoleDisplayMode(GetStdHandle(STD_OUTPUT_HANDLE), CONSOLE_FULLSCREEN_MODE, 0);
 
 	HANDLE out = GetStdHandle(STD_OUTPUT_HANDLE);
 	CONSOLE_CURSOR_INFO cursorInfo;
@@ -60,16 +62,19 @@ int main()
 
 	Chest choo(5,5);
 	
-	Character* GuardPtr[3] = { new Guards, new Guards , new Guards };
+	Character* EnemyPtr[5] = { new Guards, new Guards , new Guards, new MiniBoss, new Boss };
 	bool hostile = false;
-	//bool donezo = true;
+	bool donezo = false;
 	int nig2 = 0;
 	int nig = 0;
 	bool hasMoved = false;
+
 	while (hero->getHealth() != 0)
 	{
-		system("CLS");
-		gameWorld.updateWorldPositions(hero, &menu, GuardPtr[0], GuardPtr[1], GuardPtr[2], &choo);
+		do
+		{
+			system("CLS");
+			gameWorld.updateWorldPositions(hero, &menu, EnemyPtr[0], EnemyPtr[1], EnemyPtr[2], &choo, EnemyPtr[3], EnemyPtr[4]);
 
 			if (!shopOpen)
 			{
@@ -96,9 +101,11 @@ int main()
 				if (gameWorld.world[hero->getX() - 1][hero->getY()] == '.')
 				{
 					hero->move(dir);
+					donezo = true;
 				}
 				else
 				{
+					donezo = false;
 					continue;
 				}
 
@@ -107,9 +114,11 @@ int main()
 				if (gameWorld.world[hero->getX() + 1][hero->getY()] == '.')
 				{
 					hero->move(dir);
+					donezo = true;
 				}
 				else
 				{
+					donezo = false;
 					continue;
 				}
 				break;
@@ -117,9 +126,11 @@ int main()
 				if (gameWorld.world[hero->getX()][hero->getY() - 1] == '.')
 				{
 					hero->move(dir);
+					donezo = true;
 				}
 				else
 				{
+					donezo = false;
 					continue;
 				}
 				break;
@@ -127,24 +138,27 @@ int main()
 				if (gameWorld.world[hero->getX()][hero->getY() + 1] == '.')
 				{
 					hero->move(dir);
+					donezo = true;
 				}
 				else
 				{
+					donezo = false;
 					continue;
 				}
 				break;
 			case 'i':
-				for (int i = 0; i < 3; i++)
+				for (int i = 0; i < 5; i++)
 				{
 					//check if any guards in the direction chosen are present
-					if (GuardPtr[i] != NULL)
+					if (EnemyPtr[i] != NULL)
 					{
-						if (hero->checkDir(dir, GuardPtr[i]))
+						if (hero->checkDir(dir, EnemyPtr[i]))
 						{
 							if (hostile)
 							{
-								hero->attack(GuardPtr[i]);
+								hero->attack(EnemyPtr[i]);
 							}
+							donezo = true;
 						}
 						else
 						{
@@ -158,17 +172,18 @@ int main()
 				}
 				break;
 			case 'k':
-				for (int i = 0; i < 3; i++)
+				for (int i = 0; i < 5; i++)
 				{
 					//check if any guards in the direction chosen are present
-					if (GuardPtr[i] != NULL)
+					if (EnemyPtr[i] != NULL)
 					{
-						if (hero->checkDir(dir, GuardPtr[i]))
+						if (hero->checkDir(dir, EnemyPtr[i]))
 						{
 							if (hostile)
 							{
-								hero->attack(GuardPtr[i]);
+								hero->attack(EnemyPtr[i]);
 							}
+							donezo = true;
 						}
 						else
 						{
@@ -182,17 +197,18 @@ int main()
 				}
 				break;
 			case 'j':
-				for (int i = 0; i < 3; i++)
+				for (int i = 0; i < 5; i++)
 				{
 					//check if any guards in the direction chosen are present
-					if (GuardPtr[i] != NULL)
+					if (EnemyPtr[i] != NULL)
 					{
-						if (hero->checkDir(dir, GuardPtr[i]))
+						if (hero->checkDir(dir, EnemyPtr[i]))
 						{
 							if (hostile)
 							{
-								hero->attack(GuardPtr[i]);
+								hero->attack(EnemyPtr[i]);
 							}
+							donezo = true;
 						}
 						else
 						{
@@ -206,17 +222,18 @@ int main()
 				}
 				break;
 			case 'l':
-				for (int i = 0; i < 3; i++)
+				for (int i = 0; i < 5; i++)
 				{
 					//check if any guards in the direction chosen are present
-					if (GuardPtr[i] != NULL)
+					if (EnemyPtr[i] != NULL)
 					{
-						if (hero->checkDir(dir, GuardPtr[i]))
+						if (hero->checkDir(dir, EnemyPtr[i]))
 						{
 							if (hostile)
 							{
-								hero->attack(GuardPtr[i]);
+								hero->attack(EnemyPtr[i]);
 							}
+							donezo = true;
 						}
 						else
 						{
@@ -231,10 +248,12 @@ int main()
 				break;
 			case 'h':
 				hostile = true;
+				donezo = false;
 				break;
 			case 'm':
+				donezo = false;
 				system("CLS");
-				gameWorld.printWorldMap(hero, &menu, hostile, GuardPtr[0], GuardPtr[1], GuardPtr[2]);
+				gameWorld.printWorldMap(hero, &menu, hostile, EnemyPtr[0], EnemyPtr[1], EnemyPtr[2], &choo, EnemyPtr[3], EnemyPtr[4]);
 				std::cout << std::endl << std::endl << std::endl;
 				system("pause");
 				break;
@@ -249,10 +268,11 @@ int main()
 					hero->getX() == menu.getX() + 1 && hero->getY() == menu.getY()
 					)
 				{
+					donezo = false;
 					shopOpen = !shopOpen;
 					menu.ResetShop();
 				}
-				if (hero->getX() == choo.getX() - 1 && hero->getY() == choo.getY() ||
+				 else if (hero->getX() == choo.getX() - 1 && hero->getY() == choo.getY() ||
 					hero->getX() == choo.getX() && hero->getY() == choo.getY() + 1 ||
 					hero->getX() == choo.getX() + 1 && hero->getY() == choo.getY() + 1 ||
 					hero->getX() == choo.getX() + 1 && hero->getY() == choo.getY() - 1 ||
@@ -262,31 +282,40 @@ int main()
 					hero->getX() == choo.getX() + 1 && hero->getY() == choo.getY()
 					)
 				{
+					donezo = false;
 					int monei = choo.open();
 					hero->getMoney() += monei;
 					std::cout << "You opened a choo chest! You have earned " + std::to_string(monei) + "credits" << std::endl;
 					system("pause");
 				}
+				 else
+				{
+					donezo = false;
+				}
 				break;
 			case 'q':
 				exit(0);
 			default:
+				donezo = false;
 				break;
 			}
+		} while (!donezo);
 
-		//checking guards health
-		for (int i = 0; i < 3; i++)
+			
+
+		//checking enemies health
+		for (int i = 0; i < 5; i++)
 		{
 			// if guard has not died and is lower than 0 in health
-			if (GuardPtr[i] != NULL && GuardPtr[i]->getHealth() <= 0)
+			if (EnemyPtr[i] != NULL && EnemyPtr[i]->getHealth() <= 0)
 			{
-				hero->getMoney() += static_cast<Guards*>(GuardPtr[i])->getWorth();
+				hero->getMoney() += static_cast<Guards*>(EnemyPtr[i])->getWorth();
 				//DELETE guard
-				delete GuardPtr[i];
-				GuardPtr[i] = NULL;
+				delete EnemyPtr[i];
+				EnemyPtr[i] = NULL;
 			}
 			// if guard has died
-			else if (GuardPtr[i] == NULL)
+			else if (EnemyPtr[i] == NULL)
 			{
 				continue;
 			}
@@ -297,16 +326,16 @@ int main()
 
 		char temp[4] = { 'i','k' ,'j' ,'l' };
 
-		for (int i = 0; i < 3; i++)
+		for (int i = 0; i < 5; i++)
 		{
-			if (GuardPtr[i] != NULL)
+			if (EnemyPtr[i] != NULL)
 			{
-				// checking if player is near each goblin
+				// checking if player is near each guard
 				for (size_t p = 0; p < 4; p++)
 				{
-					GuardPtr[i]->canAttack = GuardPtr[i]->checkDir(temp[p], hero);
+					EnemyPtr[i]->canAttack = EnemyPtr[i]->checkDir(temp[p], hero);
 
-					if (GuardPtr[i]->canAttack == true)
+					if (EnemyPtr[i]->canAttack == true)
 						break;
 					else
 						continue;
@@ -315,13 +344,13 @@ int main()
 				// if hostile is false, they will not attack
 				if (hostile == false)
 				{
-					GuardPtr[i]->canAttack = false;
+					EnemyPtr[i]->canAttack = false;
 				}
 
-				if (GuardPtr[i]->canAttack == true)
+				if (EnemyPtr[i]->canAttack == true)
 				{
 					// if player is 1 square away, attack is called
-					GuardPtr[i]->attack(hero);
+					EnemyPtr[i]->attack(hero);
 				}
 				else
 				{
@@ -342,10 +371,10 @@ int main()
 							} while (nig2 == 0);
 
 							//updates the world positions
-							gameWorld.updateWorldPositions(hero, &menu, GuardPtr[0], GuardPtr[1], GuardPtr[2], &choo);
+							gameWorld.updateWorldPositions(hero, &menu, EnemyPtr[0], EnemyPtr[1], EnemyPtr[2], &choo, EnemyPtr[3], EnemyPtr[4]);
 
 							// checking if the spot is empty
-							if (gameWorld.world[GuardPtr[i]->getX() + nig2][GuardPtr[i]->getY()] != '.')
+							if (gameWorld.world[EnemyPtr[i]->getX() + nig2][EnemyPtr[i]->getY()] != '.')
 							{
 								hasMoved = false;
 								continue;
@@ -354,12 +383,12 @@ int main()
 							{
 								if (nig2 == 1)
 								{
-									GuardPtr[i]->move('s');
+									EnemyPtr[i]->move('s');
 									hasMoved = true;
 								}
 								else
 								{
-									GuardPtr[i]->move('w');
+									EnemyPtr[i]->move('w');
 									hasMoved = true;
 								}
 							}
@@ -375,9 +404,9 @@ int main()
 							} while (nig2 == 0);
 
 							//updates world positions
-							gameWorld.updateWorldPositions(hero, &menu, GuardPtr[0], GuardPtr[1], GuardPtr[2], &choo);
+							gameWorld.updateWorldPositions(hero, &menu, EnemyPtr[0], EnemyPtr[1], EnemyPtr[2], &choo, EnemyPtr[3], EnemyPtr[4]);
 
-							if (gameWorld.world[GuardPtr[i]->getX()][GuardPtr[i]->getY() + nig2] != '.')
+							if (gameWorld.world[EnemyPtr[i]->getX()][EnemyPtr[i]->getY() + nig2] != '.')
 							{
 								hasMoved = false;
 								continue;
@@ -386,12 +415,12 @@ int main()
 							{
 								if (nig2 == 1)
 								{
-									GuardPtr[i]->move('d');
+									EnemyPtr[i]->move('d');
 									hasMoved = true;
 								}
 								else
 								{
-									GuardPtr[i]->move('a');
+									EnemyPtr[i]->move('a');
 									hasMoved = true;
 								}
 							}
@@ -402,7 +431,7 @@ int main()
 		}
 	}
 
-	gameWorld.updateWorldPositions(hero, &menu, GuardPtr[0], GuardPtr[1], GuardPtr[2], &choo);
+	gameWorld.updateWorldPositions(hero, &menu, EnemyPtr[0], EnemyPtr[1], EnemyPtr[2], &choo, EnemyPtr[3], EnemyPtr[4]);
 
 	// LOSE AND WIN CONDITIONS
 	//LOSE

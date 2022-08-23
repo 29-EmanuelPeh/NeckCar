@@ -3,5 +3,7 @@
 
 class MiniBoss : public Character
 {
+public:
+	MiniBoss();
 };
 

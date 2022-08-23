@@ -15,7 +15,7 @@ World::World()
 	}
 }
 
-void World::updateWorldPositions(Character* player, Shop* shopLocate, Character* guard1, Character* guard2, Character* guard3, Chest* chest)
+void World::updateWorldPositions(Character* player, Shop* shopLocate, Character* guard1, Character* guard2, Character* guard3, Chest* chest, Character* miniboss, Character* boss)
 {
 	/*if (guard1->getHealth() <= 0)
 	{
@@ -61,6 +61,14 @@ void World::updateWorldPositions(Character* player, Shop* shopLocate, Character*
 			{
 				world[x][y] = chest->getchestIcon();
 			}
+			else if (x == miniboss->getX() && y == miniboss->getY())
+			{
+				world[x][y] = 'M';
+			}
+			else if (x == boss->getX() && y == boss->getY())
+			{
+				world[x][y] = char(225);
+			}
 			else 
 			{
 				world[x][y] = '.';
@@ -105,6 +113,14 @@ void World::printWorld(Character* player, bool hostile)
 					SetConsoleTextAttribute(h, 0x08);
 				}
 			}
+			else if (world[player->getX() + tempX][player->getY() + tempY] == 'M')
+			{
+				SetConsoleTextAttribute(h, 0x06);
+			}
+			else if (world[player->getX() + tempX][player->getY() + tempY] == char(225))
+			{
+				SetConsoleTextAttribute(h, 0x0C);
+			}
 			if (((player->getY() + tempY) >= 0) && 
 				((player->getY() + tempY) <= 100) &&
 				((player->getX() + tempX) >= 0) &&
@@ -128,7 +144,7 @@ void World::printWorld(Character* player, bool hostile)
 	std::cout << std::endl;
 }
 
-void World::printWorldMap(Character* player, Shop* shopLocate, bool hostile, Character* guard1, Character* guard2, Character* guard3)
+void World::printWorldMap(Character* player, Shop* shopLocate, bool hostile, Character* guard1, Character* guard2, Character* guard3, Chest* chest, Character* miniboss, Character* boss)
 {
 	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
 	std::cout << "Legend:" << "                     |" << std::endl;
@@ -166,6 +182,14 @@ void World::printWorldMap(Character* player, Shop* shopLocate, bool hostile, Cha
 				{
 					SetConsoleTextAttribute(h, 0x08);
 				}
+			}
+			else if (world[x][y] == 'M')
+			{
+				SetConsoleTextAttribute(h, 0x06);
+			}
+			else if (world[x][y] == char(225))
+			{
+				SetConsoleTextAttribute(h, 0x0C);
 			}
 			std::cout << world[x][y];
 			SetConsoleTextAttribute(h, 0x0f);
