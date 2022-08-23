@@ -162,11 +162,13 @@ int main()
 						}
 						else
 						{
+							donezo = true;
 							continue;
 						}
 					}
 					else
 					{
+						donezo = true;
 						continue;
 					}
 				}
@@ -187,11 +189,13 @@ int main()
 						}
 						else
 						{
+							donezo = true;
 							continue;
 						}
 					}
 					else
 					{
+						donezo = true;
 						continue;
 					}
 				}
@@ -212,11 +216,13 @@ int main()
 						}
 						else
 						{
+							donezo = true;
 							continue;
 						}
 					}
 					else
 					{
+						donezo = true;
 						continue;
 					}
 				}
@@ -237,11 +243,13 @@ int main()
 						}
 						else
 						{
+							donezo = true;
 							continue;
 						}
 					}
 					else
 					{
+						donezo = true;
 						continue;
 					}
 				}
