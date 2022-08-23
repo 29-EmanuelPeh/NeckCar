@@ -16,6 +16,18 @@ World::World()
 
 void World::updateWorldPositions(Character* player, Shop* shopLocate, Character* guard1, Character* guard2, Character* guard3)
 {
+	/*if (guard1->getHealth() <= 0)
+	{
+		kill(guard1);
+	}
+	if (guard2->getHealth() <= 0)
+	{
+		kill(guard2);
+	}
+	if (guard3->getHealth() <= 0)
+	{
+		kill(guard3);
+	}*/
 	for (int x = 0; x < 101; x++)
 	{
 		for (int y = 0; y < 101; y++)
@@ -113,8 +125,16 @@ void World::printWorld(Character* player, bool hostile)
 void World::printWorldMap(Character* player, Shop* shopLocate, bool hostile, Character* guard1, Character* guard2, Character* guard3)
 {
 	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
-
-	for (size_t x = 0; x < 101; x++)
+	std::cout << "-----------------------------" << std::endl;
+	std::cout << "|" << " " << "Legend:" << "                   " << "|" << std::endl;
+	std::cout << "|" << "        ->" <<"(P)layer (YOU)" << "   " << "|" << std::endl;
+	std::cout << "|" << "        ->" << "(G)uards" << "         " << "|" << std::endl;
+	std::cout << "|" << "        ->" << "(S)hop" << "           " << "|" << std::endl;
+	std::cout << "|" << "        ->" << "(C)hest"<< "          " << "|" << std::endl;
+	std::cout << "|" << "        ->" << "(M)iniboss" << "       "<< "|" << std::endl;
+	std::cout << "|" << "        ->" << "(B)oss" << "           " << "|" << std::endl;
+	std::cout << "-----------------------------" << std::endl;
+   	for (size_t x = 0; x < 101; x++)
 	{
 		for (size_t y = 0; y < 101; y++)
 		{
@@ -141,13 +161,13 @@ void World::printWorldMap(Character* player, Shop* shopLocate, bool hostile, Cha
 					SetConsoleTextAttribute(h, 0x08);
 				}
 			}
-
 			std::cout << world[x][y];
 			SetConsoleTextAttribute(h, 0x0f);
 		}
 		std::cout << std::endl;
 	}
 }
+
 
 World::~World()
 {
