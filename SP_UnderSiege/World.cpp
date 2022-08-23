@@ -34,15 +34,15 @@ void World::updateWorldPositions(Character* player, Shop* shopLocate, Character*
 		{
 			if (x == 0 || x == 100 || y == 0 || y == 100 || x == 50 && (y == 40 || y == 41 || y == 42 || y == 43))
 			{
-				world[x][y] = '+';
+				world[x][y] = char(254);
 			}
 			else if (x == player->getX() && y == player->getY())
 			{
-				world[x][y] = 'P';
+				world[x][y] = 2;
 			}
 			else if (x == shopLocate->getX() && y == shopLocate->getY())
 			{
-				world[x][y] = 'S';
+				world[x][y] = char(36);
 			}
 			else if (guard1 != NULL && x == guard1->getX() && y == guard1->getY())
 			{
@@ -77,15 +77,15 @@ void World::printWorld(Character* player, bool hostile)
 
 		for (size_t y = 0; y < 21; y++)
 		{
-			if (world[player->getX() + tempX][player->getY() + tempY] == '+')
+			if (world[player->getX() + tempX][player->getY() + tempY] == char(254))
 			{
 				SetConsoleTextAttribute(h, 0x05);
 			}
-			else if (world[player->getX() + tempX][player->getY() + tempY] == 'P')
+			else if (world[player->getX() + tempX][player->getY() + tempY] == 2)
 			{
 				SetConsoleTextAttribute(h, 0x02);
 			}
-			else if (world[player->getX() + tempX][player->getY() + tempY] == 'S')
+			else if (world[player->getX() + tempX][player->getY() + tempY] == char(36))
 			{
 				SetConsoleTextAttribute(h, 0x01);
 			}
@@ -127,7 +127,7 @@ void World::printWorldMap(Character* player, Shop* shopLocate, bool hostile, Cha
 	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
 	std::cout << "-----------------------------" << std::endl;
 	std::cout << "|" << " " << "Legend:" << "                   " << "|" << std::endl;
-	std::cout << "|" << "        ->" <<"(P)layer (YOU)" << "   " << "|" << std::endl;
+	std::cout << "|" << "        ->" <<" Player (YOU)" << "   " << "|" << std::endl;
 	std::cout << "|" << "        ->" << "(G)uards" << "         " << "|" << std::endl;
 	std::cout << "|" << "        ->" << "(S)hop" << "           " << "|" << std::endl;
 	std::cout << "|" << "        ->" << "(C)hest"<< "          " << "|" << std::endl;
@@ -138,15 +138,15 @@ void World::printWorldMap(Character* player, Shop* shopLocate, bool hostile, Cha
 	{
 		for (size_t y = 0; y < 101; y++)
 		{
-			if (world[x][y] == '+')
+			if (world[x][y] == char(254))
 			{
 				SetConsoleTextAttribute(h, 0x05);
 			}
-			else if (world[x][y] == 'P')
+			else if (world[x][y] == 2)
 			{
 				SetConsoleTextAttribute(h, 0x02);
 			}
-			else if (world[x][y] == 'S')
+			else if (world[x][y] == char(36))
 			{
 				SetConsoleTextAttribute(h, 0x01);
 			}
