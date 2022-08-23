@@ -69,6 +69,7 @@ int main()
 	int nig = 0;
 	bool hasMoved = false;
 	int BossSteps = 1;
+	bool FinalBossCanMove = false;
 
 	while (hero->getHealth() != 0)
 	{
@@ -440,12 +441,22 @@ int main()
 					// if its bosses
 					else
 					{
-						if (BossSteps % 2 == 0)
+						if (BossSteps % 2 == 0 && hostile)
 						{
 							//updates the world positions
 							gameWorld.updateWorldPositions(hero, &menu, EnemyPtr[0], EnemyPtr[1], EnemyPtr[2], &choo, EnemyPtr[3], EnemyPtr[4]);
 
 							bool Moved = false;
+							
+							if (i == 4)
+							{
+								// final boss can only move when player activated final event
+								if (!FinalBossCanMove)
+								{
+									BossSteps++;
+									continue;
+								}
+							}
 
 							do
 							{
