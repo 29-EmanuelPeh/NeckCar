@@ -4,6 +4,6 @@ MiniBoss::MiniBoss()
 {
 	health = 100;
 	damage = 10;
-	x = 1;
-	y = 8;
+	x = 25;
+	y = 89;
 }
