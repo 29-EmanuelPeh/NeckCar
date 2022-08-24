@@ -204,17 +204,17 @@ void World::updateWorldPositions(Character* player, Shop* shopLocate
 			{
 			world[x][y] = 'G';
 			}
-			else if (x == chest->getX() && y == chest->getY())
+			else if (chest != NULL && x == chest->getX() && y == chest->getY())
 			{
 				world[x][y] = chest->getchestIcon();
 			}
-			else if (x == chest1->getX() && y == chest1->getY())
+			else if (chest1 != NULL && x == chest1->getX() && y == chest1->getY())
 			{
-			world[x][y] = chest1->getchestIcon();
+				world[x][y] = chest1->getchestIcon();
 			}
-			else if (x == chest2->getX() && y == chest2->getY())
+			else if (chest2 != NULL && x == chest2->getX() && y == chest2->getY())
 			{
-			world[x][y] = chest2->getchestIcon();
+				world[x][y] = chest2->getchestIcon();
 			}
 			else if (miniboss != NULL && x == miniboss->getX() && y == miniboss->getY())
 			{

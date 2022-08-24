@@ -1,5 +1,5 @@
 #pragma once
-#include "Object.h"
+
 class Character
 {
 protected:
@@ -11,9 +11,6 @@ protected:
 	int x;
 	int y;
 	int money;
-	static const int inventorySize = 3;
-	Object* inventory[inventorySize];
-	int currentCapacity = 0;
 public:
 	Character();
 
@@ -25,13 +22,15 @@ public:
 	void setY(int py);
 	int getHealth();
 	void setHealth(int h);
+	int getArmor();
+	void setArmor(int a);
 	int getDamage();
-	int getRange();
+	void setDamage(int d);
+	int getPotion();
+	void setPotion(int p);
 	void move(char dir);
 	bool checkDir(char dir, Character* enemy);
 	void attack(Character* enemy);
-	void addInventory(Object* object);
-	void printInventory();
 	int getMoney();
 	void setMoney(int money);
 	~Character();

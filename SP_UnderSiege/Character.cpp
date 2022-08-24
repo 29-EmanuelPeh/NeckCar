@@ -13,10 +13,6 @@ Character::Character()
 	x = 1;
 	y = 1;
     canAttack = false;
-    for (int i = 0; i < inventorySize; i++)
-    {
-        inventory[i] = nullptr;
-    }
 }
 
 void Character::PrintStat(void)
@@ -29,31 +25,12 @@ void Character::PrintStat(void)
     std::cout << "  Armor: " << armor;
     SetConsoleTextAttribute(h, 0x0D);
     std::cout << "  AttackPt: " << damage;
+    SetConsoleTextAttribute(h, 0x04);
+    std::cout << "  HealthPotion: " << healthpotion;
     SetConsoleTextAttribute(h, 0x0E);
     std::cout << "  Money: " << money << std::endl << std::endl;
 
     SetConsoleTextAttribute(h, 0x0f);
-}
-
-void Character::addInventory(Object* object)
-{
-    if (currentCapacity >= inventorySize)
-    {
-        return;
-    }
-    inventory[currentCapacity++] = object;
-}
-
-void Character::printInventory()
-{
-    for (int i = 0; i < inventorySize; i++)
-    {
-        if (inventory[i] == nullptr)
-        {
-            continue;
-        }
-        std::cout << inventory[i]->getPrice() << std::endl;
-    }
 }
 
 int Character::getX()
@@ -94,14 +71,34 @@ void Character::setHealth(int h)
         health = 100;
 }
 
-int Character::getDamage()
+int Character::getArmor()
 {
-    return 0;
+    return armor;
 }
 
-int Character::getRange()
+void Character::setArmor(int a)
 {
-    return 0;
+    armor += a;
+}
+
+int Character::getDamage()
+{
+    return damage;
+}
+
+void Character::setDamage(int d)
+{
+    damage += d;
+}
+
+int Character::getPotion()
+{
+    return healthpotion;
+}
+
+void Character::setPotion(int p)
+{
+    healthpotion += p;
 }
 
 int Character::getMoney()

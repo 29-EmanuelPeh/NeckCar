@@ -1,19 +1,11 @@
 #include "Shop.h"
-#include "Weapon.h"
 #include <iostream>
 #include <string>
-#include "Armor.h"
-#include "Elixir.h"
-#include "Object.h"
 
 Shop::Shop()
 {
 	x = 24;
 	y = 32;
-	accessory = new Object*[shopCapacity];
-	accessory[0] = new Weapon;
-	accessory[1] = new Armor;
-	accessory[2] = new Elixir;
 }
 
 int Shop::getX()
@@ -61,19 +53,57 @@ void Shop::ResetShop()
 	buffer = "Welcome to URAYA. What would you like to purchase? 1 - Weapon |  2 - Knights Armor | 3 - Elixir";
 }
 
-Object* Shop::buy(int number, Character* player)
+void Shop::buy(int number, Character* player)
 {
-	if (number-48 > shopCapacity || number-48 < 1)
+	switch (number)
 	{
-		buffer = "Item does not belong in the shop brotha ||  1 - Weapon |  2 - Knights Armor | 3 - Elixir";
-		return nullptr;
+	case 49:
+		if (player->getMoney() > 40)
+		{
+			player->setDamage(10);
+			player->setMoney(-40);
+
+			buffer = "You bought Weapon!";
+
+			ResetShop();
+		}
+		else
+		{
+			buffer = "You are broke! You cannot buy anymore things in the store anymore! ||  1 - Weapon |  2 - Knights Armor | 3 - Elixir ";
+		}
+		break;
+	case 50:
+		if (player->getMoney() > 50)
+		{
+			player->setArmor(50);
+			player->setMoney(-50);
+
+			buffer = "You bought Armor!";
+
+			ResetShop();
+		}
+		else
+		{
+			buffer = "You are broke! You cannot buy anymore things in the store anymore! ||  1 - Weapon |  2 - Knights Armor | 3 - Elixir ";
+		}
+		break;
+	case 51:
+		if (player->getMoney() > 10)
+		{
+			player->setPotion(1);
+			player->setMoney(-10);
+
+			buffer = "You bought Health Potion!";
+
+			ResetShop();
+		}
+		else
+		{
+			buffer = "You are broke! You cannot buy anymore things in the store anymore! ||  1 - Weapon |  2 - Knights Armor | 3 - Elixir ";
+		}
+		break;
+	default:
+		buffer = "Not an item! ||  1 - Weapon |  2 - Knights Armor | 3 - Elixir ";
+		break;
 	}
-	buffer = "You bought "  + accessory[number - 49]->gettypeofObject() + "!";
-	if (player->getMoney() < accessory[number - 49]->getPrice())
-	{
-		buffer = "You are broke! You cannot buy anymore things in the store anymore! ||  1 - Weapon |  2 - Knights Armor | 3 - Elixir ";
-		return nullptr;
-	}
-	player->setMoney(-(accessory[number - 49]->getPrice()));
-	return accessory[number - 49];
 }

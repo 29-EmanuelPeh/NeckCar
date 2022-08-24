@@ -62,9 +62,9 @@ int main()
 	Shop menu;
 	bool shopOpen = false;
 
-	Chest choo;
-	Chest choo1;
-	Chest choo2;
+	Chest* choo = new Chest;
+	Chest* choo1 = new Chest;
+	Chest* choo2 = new Chest;
 	
 	Character* EnemyPtr[23] = { new Guards, new Guards , new Guards
 								,new Guards, new Guards , new Guards
@@ -87,7 +87,7 @@ int main()
 			, EnemyPtr[9], EnemyPtr[10], EnemyPtr[11]
 			, EnemyPtr[12], EnemyPtr[13], EnemyPtr[14]
 			, EnemyPtr[15], EnemyPtr[16], EnemyPtr[17]
-			, EnemyPtr[18], EnemyPtr[19], EnemyPtr[20], &choo, &choo1, &choo2);
+			, EnemyPtr[18], EnemyPtr[19], EnemyPtr[20], choo, choo1, choo2);
 
 	while (hero->getHealth() != 0 && EnemyPtr[22] != NULL)
 	{
@@ -101,7 +101,7 @@ int main()
 				, EnemyPtr[9], EnemyPtr[10], EnemyPtr[11]
 				, EnemyPtr[12], EnemyPtr[13], EnemyPtr[14]
 				, EnemyPtr[15], EnemyPtr[16], EnemyPtr[17]
-				, EnemyPtr[18], EnemyPtr[19], EnemyPtr[20], &choo, &choo1, &choo2, EnemyPtr[21], EnemyPtr[22]);
+				, EnemyPtr[18], EnemyPtr[19], EnemyPtr[20], choo, choo1, choo2, EnemyPtr[21], EnemyPtr[22]);
 
 			if (!shopOpen)
 			{
@@ -113,12 +113,11 @@ int main()
 			{
 				menu.printMenu(hero->getMoney());
 			}
-			/*hero->printInventory();*/
 			dir = _getch();
 			std::cout << std::endl;
 			if (shopOpen)
 			{
-				hero->addInventory(menu.buy(dir, hero));
+				menu.buy(dir, hero);
 			}
 
 			//calling the function that the input has
@@ -295,48 +294,49 @@ int main()
 			case 'e':
 				if (hero->getX() == menu.getX() - 1 && hero->getY() == menu.getY() ||
 					hero->getX() == menu.getX() && hero->getY() == menu.getY() + 1 ||
-					hero->getX() == menu.getX() + 1 && hero->getY() == menu.getY() + 1 ||
-					hero->getX() == menu.getX() + 1 && hero->getY() == menu.getY() - 1 ||
-					hero->getX() == menu.getX() - 1 && hero->getY() == menu.getY() + 1 ||
-					hero->getX() == menu.getX() - 1 && hero->getY() == menu.getY() - 1 ||
 					hero->getX() == menu.getX() && hero->getY() == menu.getY() - 1 ||
-					hero->getX() == menu.getX() + 1 && hero->getY() == menu.getY()
-					)
+					hero->getX() == menu.getX() + 1 && hero->getY() == menu.getY())
 				{
 					donezo = false;
 					shopOpen = !shopOpen;
 					menu.ResetShop();
 				}
-				 else if (hero->getX() == choo.getX() - 1 && hero->getY() == choo.getY() ||
-						hero->getX() == choo.getX() && hero->getY() == choo.getY() + 1 ||
-						hero->getX() == choo.getX() && hero->getY() == choo.getY() - 1 ||
-						hero->getX() == choo.getX() + 1 && hero->getY() == choo.getY())
+				 else if (choo != NULL && (hero->getX() == choo->getX() - 1 && hero->getY() == choo->getY() ||
+						hero->getX() == choo->getX() && hero->getY() == choo->getY() + 1 ||
+						hero->getX() == choo->getX() && hero->getY() == choo->getY() - 1 ||
+						hero->getX() == choo->getX() + 1 && hero->getY() == choo->getY()))
 				{
 					donezo = false;
-					int monei = choo.open();
+					int monei = choo->open();
 					hero->setMoney(monei);
+					delete choo;
+					choo = NULL;
 					std::cout << "You opened a choo chest! You have earned " + std::to_string(monei) + "credits" << std::endl;
 					system("pause");
 				}
-				 else if (hero->getX() == choo1.getX() - 1 && hero->getY() == choo1.getY() ||
-					 hero->getX() == choo1.getX() && hero->getY() == choo1.getY() + 1 ||
-					 hero->getX() == choo1.getX() && hero->getY() == choo1.getY() - 1 ||
-					 hero->getX() == choo1.getX() + 1 && hero->getY() == choo1.getY())
+				 else if (choo1 != NULL && (hero->getX() == choo1->getX() - 1 && hero->getY() == choo1->getY() ||
+					 hero->getX() == choo1->getX() && hero->getY() == choo1->getY() + 1 ||
+					 hero->getX() == choo1->getX() && hero->getY() == choo1->getY() - 1 ||
+					 hero->getX() == choo1->getX() + 1 && hero->getY() == choo1->getY()))
 				{
 					donezo = false;
-					int monei = choo1.open();
+					int monei = choo1->open();
 					hero->setMoney(monei);
+					delete choo1;
+					choo1 = NULL;
 					std::cout << "You opened a choo chest! You have earned " + std::to_string(monei) + "credits" << std::endl;
 					system("pause");
 				}
-				 else if (hero->getX() == choo2.getX() - 1 && hero->getY() == choo2.getY() ||
-					 hero->getX() == choo2.getX() && hero->getY() == choo2.getY() + 1 ||
-					 hero->getX() == choo2.getX() && hero->getY() == choo2.getY() - 1 ||
-					 hero->getX() == choo2.getX() + 1 && hero->getY() == choo2.getY())
+				 else if (choo2 != NULL && (hero->getX() == choo2->getX() - 1 && hero->getY() == choo2->getY() ||
+					 hero->getX() == choo2->getX() && hero->getY() == choo2->getY() + 1 ||
+					 hero->getX() == choo2->getX() && hero->getY() == choo2->getY() - 1 ||
+					 hero->getX() == choo2->getX() + 1 && hero->getY() == choo2->getY()))
 				{
 					donezo = false;
-					int monei = choo2.open();
+					int monei = choo2->open();
 					hero->setMoney(monei);
+					delete choo2;
+					choo2 = NULL;
 					std::cout << "You opened a choo chest! You have earned " + std::to_string(monei) + "credits" << std::endl;
 					system("pause");
 				}
@@ -439,7 +439,7 @@ int main()
 									, EnemyPtr[9], EnemyPtr[10], EnemyPtr[11]
 									, EnemyPtr[12], EnemyPtr[13], EnemyPtr[14]
 									, EnemyPtr[15], EnemyPtr[16], EnemyPtr[17]
-									, EnemyPtr[18], EnemyPtr[19], EnemyPtr[20], &choo, &choo1, &choo2, EnemyPtr[21], EnemyPtr[22]);
+									, EnemyPtr[18], EnemyPtr[19], EnemyPtr[20], choo, choo1, choo2, EnemyPtr[21], EnemyPtr[22]);
 
 								// checking if the spot is empty
 								if (gameWorld.world[EnemyPtr[i]->getX() + nig2][EnemyPtr[i]->getY()] != '.')
@@ -479,7 +479,7 @@ int main()
 									, EnemyPtr[9], EnemyPtr[10], EnemyPtr[11]
 									, EnemyPtr[12], EnemyPtr[13], EnemyPtr[14]
 									, EnemyPtr[15], EnemyPtr[16], EnemyPtr[17]
-									, EnemyPtr[18], EnemyPtr[19], EnemyPtr[20], &choo, &choo1, &choo2, EnemyPtr[21], EnemyPtr[22]);
+									, EnemyPtr[18], EnemyPtr[19], EnemyPtr[20], choo, choo1, choo2, EnemyPtr[21], EnemyPtr[22]);
 
 								if (gameWorld.world[EnemyPtr[i]->getX()][EnemyPtr[i]->getY() + nig2] != '.')
 								{
@@ -515,7 +515,7 @@ int main()
 								, EnemyPtr[9], EnemyPtr[10], EnemyPtr[11]
 								, EnemyPtr[12], EnemyPtr[13], EnemyPtr[14]
 								, EnemyPtr[15], EnemyPtr[16], EnemyPtr[17]
-								, EnemyPtr[18], EnemyPtr[19], EnemyPtr[20], &choo, &choo1, &choo2, EnemyPtr[21], EnemyPtr[22]);
+								, EnemyPtr[18], EnemyPtr[19], EnemyPtr[20], choo, choo1, choo2, EnemyPtr[21], EnemyPtr[22]);
 
 							bool Moved = false;
 							
@@ -598,7 +598,7 @@ int main()
 		, EnemyPtr[9], EnemyPtr[10], EnemyPtr[11]
 		, EnemyPtr[12], EnemyPtr[13], EnemyPtr[14]
 		, EnemyPtr[15], EnemyPtr[16], EnemyPtr[17]
-		, EnemyPtr[18], EnemyPtr[19], EnemyPtr[20], &choo, &choo1, &choo2, EnemyPtr[21], EnemyPtr[22]);
+		, EnemyPtr[18], EnemyPtr[19], EnemyPtr[20], choo, choo1, choo2, EnemyPtr[21], EnemyPtr[22]);
 	gameWorld.printWorld(hero, hostile);
 	hero->PrintStat();
 

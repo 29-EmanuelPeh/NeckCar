@@ -5,6 +5,7 @@ Chest::Chest()
 {
 	chestIcon = 'C';
 	moneyReward = rand() % 11 + 10;
+	opened = false;
 }
 
 int Chest::getX()
@@ -34,6 +35,5 @@ char Chest::getchestIcon()
 
 int Chest::open()
 {
-	chestIcon = '.';
 	return moneyReward;
 }

@@ -6,7 +6,9 @@ private:
 	int x;
 	int y;
 	int moneyReward;
+
 public:
+	bool opened;
 	Chest();
 	int getX();
 	void setX(int px);
