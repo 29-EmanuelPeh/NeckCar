@@ -9,19 +9,7 @@
 #include "Chest.h"
 #include "Boss.h"
 #include "MiniBoss.h"
-
-void slowPrint(std::string textToPrint, int speed)
-{
-	int x = 1;
-	while (textToPrint[x] != '\0')
-	{
-		std::cout << textToPrint[x];
-		Sleep(speed);
-		x++;
-	};
-
-	std::cout << std::endl << std::endl;
-}
+#include "Dialogue.h"
 
 int main()
 {
@@ -54,6 +42,32 @@ int main()
 	std::cout << "                                              |___/      " << std::endl;
 
 	system("pause");
+	system("CLS");
+
+	Dialogue consoletext;
+	bool dialogueHappening = false;
+	int dialogueNum = 0;
+
+	//background story
+	std::cout << "   / |                                                       /|" << std::endl;
+	std::cout << "  |  |                                                      | |" << std::endl;
+	std::cout << "/---- |                                                   /----|" << std::endl;
+	std::cout << "[______]                                                 [______]" << std::endl;
+	std::cout << " |    |         _____                        _____         |    |" << std::endl;
+	std::cout << "|[]  |        [     ]                      [     ]        |  []|" << std::endl;
+	std::cout << "|    |       [_______][ ][ ][ ][][ ][ ][ ][_______]       |    |" << std::endl;
+	std::cout << " |    [ ][ ][ ]|     |  ,----------------,  |     |[ ][ ][ ]    |" << std::endl;
+	std::cout << " |             |     |/'    ____..____    ' |     |             |" << std::endl;
+	std::cout << "  |  []        |     |    /'    ||    '    |     |        []  /" << std::endl;
+	std::cout << "   |      []   |     |   |o     ||     o|   |     |  []       |" << std::endl;
+	std::cout << "   |           |  _  |   |     _||_     |   |  _  |           |" << std::endl;
+	std::cout << "   |   []      | (_) |   |    (_||_)    |   | (_) |       []  |" << std::endl;
+	std::cout << "   |           |     |   |     (||)     |   |     |           |" << std::endl;
+	std::cout << "   |           |     |   |      ||      |   |     |           |" << std::endl;
+	std::cout << " /''           |     |   |o     ||     o|   |     |           '' " << std::endl;
+	std::cout << "[_____________[_______]--'------''------'--[_______]_____________]" << std::endl << std::endl << std::endl << std::endl;
+
+	consoletext.intro();
 
 	World gameWorld;
 	Character* hero = new Character;
@@ -89,6 +103,17 @@ int main()
 			, EnemyPtr[15], EnemyPtr[16], EnemyPtr[17]
 			, EnemyPtr[18], EnemyPtr[19], EnemyPtr[20], choo, choo1, choo2);
 
+	// intro hint dialogue
+	dialogueHappening = true;
+	dialogueNum = 1;
+
+	bool HavenotTalkedToCastleGuards = true;
+
+	bool HavenoTalkedToSuperior = true;
+
+	bool SuperiorNotDefeated = true;
+	int tempcounter = 0;
+
 	while (hero->getHealth() != 0 && EnemyPtr[22] != NULL)
 	{
 		do
@@ -103,11 +128,103 @@ int main()
 				, EnemyPtr[15], EnemyPtr[16], EnemyPtr[17]
 				, EnemyPtr[18], EnemyPtr[19], EnemyPtr[20], choo, choo1, choo2, EnemyPtr[21], EnemyPtr[22]);
 
+			//check if first time talk to guards have not happened
+			if (HavenotTalkedToCastleGuards == true && ((hero->getX() == 14 || hero->getX() == 15 || hero->getX() == 16) && hero->getY() == 49))
+			{
+				HavenotTalkedToCastleGuards = false;
+				dialogueHappening = true;
+				dialogueNum = 2;
+			}
+
+			//check if first time talk to superior
+			if (HavenoTalkedToSuperior == true && HavenotTalkedToCastleGuards == false && (hero->getX() == 19 && (hero->getY() == 1 || hero->getY() == 2 || hero->getY() == 3
+				|| hero->getY() == 4 || hero->getY() == 5 || hero->getY() == 6
+				|| hero->getY() == 7 || hero->getY() == 8 || hero->getY() == 9
+				|| hero->getY() == 10 || hero->getY() == 11 || hero->getY() == 12
+				|| hero->getY() == 13 || hero->getY() == 14 || hero->getY() == 15
+				|| hero->getY() == 16 || hero->getY() == 17 || hero->getY() == 18
+				|| hero->getY() == 19 || hero->getY() == 20 || hero->getY() == 21
+				|| hero->getY() == 22 || hero->getY() == 23 || hero->getY() == 24)))
+			{
+				HavenoTalkedToSuperior = false;
+				dialogueHappening = true;
+				dialogueNum = 3;
+				hostile = true;
+			}
+
+			//if try walk out of city while still fighting miniboss
+			if (HavenoTalkedToSuperior == false && HavenotTalkedToCastleGuards == false && SuperiorNotDefeated == true && ((hero->getX() == 14 || hero->getX() == 15 || hero->getX() == 16) && hero->getY() == 25))
+			{
+				dialogueHappening = true;
+				dialogueNum = 0;
+				hero->setY(24);
+			}
+
+			//if superior dead
+			if (EnemyPtr[21] == NULL && tempcounter == 0)
+			{
+				SuperiorNotDefeated = false;
+				tempcounter++;
+				dialogueHappening = true;
+				dialogueNum = 4;
+			}
+
+			//check if player talk to superior when havent talk to guards
+			if (HavenotTalkedToCastleGuards == true && (hero->getX() == 19 && (hero->getY() == 1 || hero->getY() == 2 || hero->getY() == 3
+				|| hero->getY() == 4 || hero->getY() == 5 || hero->getY() == 6
+				|| hero->getY() == 7 || hero->getY() == 8 || hero->getY() == 9
+				|| hero->getY() == 10 || hero->getY() == 11 || hero->getY() == 12
+				|| hero->getY() == 13 || hero->getY() == 14 || hero->getY() == 15
+				|| hero->getY() == 16 || hero->getY() == 17 || hero->getY() == 18
+				|| hero->getY() == 19 || hero->getY() == 20 || hero->getY() == 21
+				|| hero->getY() == 22 || hero->getY() == 23 || hero->getY() == 24)))
+			{
+				dialogueHappening = true;
+				dialogueNum = 0;
+				hero->setX(18);
+			}
+
 			if (!shopOpen)
 			{
 				gameWorld.printWorld(hero, hostile);
-				hero->PrintStat();
-				std::cout << "What do you want to do?(WASD to move, IJKL to attack, M for map, E to shop, Q to quit): " << std::endl;
+
+				// check if dialogue is triggered
+				if (!dialogueHappening)
+				{
+					hero->PrintStat();
+					std::cout << "What do you want to do?(WASD to move, IJKL to attack, M for map, E to shop, Q to quit): " << std::endl;
+				}
+				else
+				{
+					// type of dialogue to play
+					switch (dialogueNum)
+					{
+					case 0:
+						consoletext.notallowed();
+						break;
+					case 1:
+						consoletext.introHint();
+						break;
+					case 2:
+						consoletext.CastleGuardTalk();
+						break;
+					case 3:
+						consoletext.MeetSuperiorFirstTime();
+						break;
+					case 4:
+						consoletext.BeatSuperiorFirstTime();
+						break;
+					case 5:
+						consoletext.MeetBoss();
+						break;
+					case 6:
+						consoletext.DefeatBoss();
+						break;
+					}
+
+					dialogueHappening = false;
+					continue;
+				}
 			}
 			else
 			{

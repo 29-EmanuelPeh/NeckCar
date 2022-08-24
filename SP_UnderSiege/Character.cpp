@@ -28,9 +28,11 @@ void Character::PrintStat(void)
     SetConsoleTextAttribute(h, 0x04);
     std::cout << "  HealthPotion: " << healthpotion;
     SetConsoleTextAttribute(h, 0x0E);
-    std::cout << "  Money: " << money << std::endl << std::endl;
-
+    std::cout << "  Money: " << money;
     SetConsoleTextAttribute(h, 0x0f);
+    std::cout << "  X: " << x;
+    std::cout << "  Y: " << y << std::endl << std::endl;
+
 }
 
 int Character::getX()
