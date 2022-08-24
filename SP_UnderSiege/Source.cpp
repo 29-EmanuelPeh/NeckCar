@@ -281,6 +281,19 @@ int main()
 				}
 				break;
 			case 'h':
+				if (hero->getHealth() < 100)
+				{
+					if (hero->getPotion() > 0)
+					{
+						hero->setPotion(-1);
+
+						int playertemp = hero->getHealth();
+						hero->setHealth(playertemp + 20);
+					}
+				}
+				donezo = false;
+				break;
+			case 'p':
 				hostile = true;
 				donezo = false;
 				break;

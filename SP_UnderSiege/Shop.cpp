@@ -58,7 +58,7 @@ void Shop::buy(int number, Character* player)
 	switch (number)
 	{
 	case 49:
-		if (player->getMoney() > 40)
+		if (player->getMoney() >= 40)
 		{
 			player->setDamage(10);
 			player->setMoney(-40);
@@ -73,7 +73,7 @@ void Shop::buy(int number, Character* player)
 		}
 		break;
 	case 50:
-		if (player->getMoney() > 50)
+		if (player->getMoney() >= 50)
 		{
 			player->setArmor(50);
 			player->setMoney(-50);
@@ -88,7 +88,7 @@ void Shop::buy(int number, Character* player)
 		}
 		break;
 	case 51:
-		if (player->getMoney() > 10)
+		if (player->getMoney() >= 10)
 		{
 			player->setPotion(1);
 			player->setMoney(-10);
