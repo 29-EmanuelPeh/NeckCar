@@ -291,7 +291,7 @@ int main()
 						hero->setHealth(playertemp + 20);
 					}
 				}
-				donezo = false;
+				donezo = true;
 				break;
 			case 'p':
 				hostile = true;
