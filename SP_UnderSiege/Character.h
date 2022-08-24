@@ -5,6 +5,8 @@ class Character
 protected:
 	int health;
 	int damage;
+	int armor;
+	int healthpotion;
 	int range;
 	int x;
 	int y;

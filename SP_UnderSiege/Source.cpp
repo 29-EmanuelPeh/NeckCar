@@ -118,7 +118,7 @@ int main()
 			std::cout << std::endl;
 			if (shopOpen)
 			{
-				hero->addInventory(menu.buy(dir, hero->getMoney()));
+				hero->addInventory(menu.buy(dir, hero));
 			}
 
 			//calling the function that the input has

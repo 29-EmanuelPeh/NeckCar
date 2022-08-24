@@ -61,7 +61,7 @@ void Shop::ResetShop()
 	buffer = "Welcome to URAYA. What would you like to purchase? 1 - Weapon |  2 - Knights Armor | 3 - Elixir";
 }
 
-Object* Shop::buy(int number, int money)
+Object* Shop::buy(int number, Character* player)
 {
 	if (number-48 > shopCapacity || number-48 < 1)
 	{
@@ -69,11 +69,11 @@ Object* Shop::buy(int number, int money)
 		return nullptr;
 	}
 	buffer = "You bought "  + accessory[number - 49]->gettypeofObject() + "!";
-	if (money < accessory[number - 49]->getPrice())
+	if (player->getMoney() < accessory[number - 49]->getPrice())
 	{
 		buffer = "You are broke! You cannot buy anymore things in the store anymore! ||  1 - Weapon |  2 - Knights Armor | 3 - Elixir ";
 		return nullptr;
 	}
-	money -= accessory[number - 49]->getPrice();
+	player->setMoney(-(accessory[number - 49]->getPrice()));
 	return accessory[number - 49];
 }

@@ -1,6 +1,7 @@
 #pragma once
 #include "Object.h"
 #include <iostream>
+#include "Character.h"
 class Shop
 {
 private:
@@ -16,7 +17,7 @@ public:
 	int getY();
 	void printMenu(int money);
 	void ResetShop();
-	Object* buy(int number , int money);
+	Object* buy(int number , Character* player);
 	
 
 };

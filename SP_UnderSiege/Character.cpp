@@ -6,6 +6,8 @@ Character::Character()
 {
 	health = 100;
 	damage = 100;
+    armor = 0;
+    healthpotion = 0;
 	range = 1;
     money = 0;
 	x = 1;
@@ -19,7 +21,18 @@ Character::Character()
 
 void Character::PrintStat(void)
 {
-    std::cout << "Player HP: " << health << "  AttackPt: " << damage << "  Money: " << money << std::endl;
+    HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+
+    SetConsoleTextAttribute(h, 0x0C);
+    std::cout << "HP: " << health;
+    SetConsoleTextAttribute(h, 0x03);
+    std::cout << "  Armor: " << armor;
+    SetConsoleTextAttribute(h, 0x0D);
+    std::cout << "  AttackPt: " << damage;
+    SetConsoleTextAttribute(h, 0x0E);
+    std::cout << "  Money: " << money << std::endl << std::endl;
+
+    SetConsoleTextAttribute(h, 0x0f);
 }
 
 void Character::addInventory(Object* object)
