@@ -89,7 +89,7 @@ int main()
 			, EnemyPtr[15], EnemyPtr[16], EnemyPtr[17]
 			, EnemyPtr[18], EnemyPtr[19], EnemyPtr[20], &choo, &choo1, &choo2);
 
-	while (hero->getHealth() != 0)
+	while (hero->getHealth() != 0 && EnemyPtr[22] != NULL)
 	{
 		do
 		{
@@ -607,6 +607,12 @@ int main()
 	if (hero->getHealth() == 0)
 	{
 		std::cout << std::endl << std::endl << "YOU LOSE" << std::endl << std::endl;
+		Sleep(1000);
+		system("pause");
+	}
+	else if (EnemyPtr[22] == NULL)
+	{
+		std::cout << std::endl << std::endl << "YOU WIN" << std::endl << std::endl;
 		Sleep(1000);
 		system("pause");
 	}
