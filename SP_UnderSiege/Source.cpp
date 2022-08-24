@@ -34,7 +34,7 @@ int main()
 	fontex.dwFontSize.Y = 20;
 	SetCurrentConsoleFontEx(hOut, NULL, &fontex);
 
-	//SetConsoleDisplayMode(GetStdHandle(STD_OUTPUT_HANDLE), CONSOLE_FULLSCREEN_MODE, 0);
+	SetConsoleDisplayMode(GetStdHandle(STD_OUTPUT_HANDLE), CONSOLE_FULLSCREEN_MODE, 0);
 
 	HANDLE out = GetStdHandle(STD_OUTPUT_HANDLE);
 	CONSOLE_CURSOR_INFO cursorInfo;
@@ -100,7 +100,7 @@ int main()
 			switch (dir)
 			{
 			case 'w':
-				if (gameWorld.world[hero->getX() - 1][hero->getY()] == '.')
+				if (gameWorld.world[hero->getX() - 1][hero->getY()] == '.' && !shopOpen)
 				{
 					hero->move(dir);
 					donezo = true;
@@ -113,7 +113,7 @@ int main()
 
 				break;
 			case 's':
-				if (gameWorld.world[hero->getX() + 1][hero->getY()] == '.')
+				if (gameWorld.world[hero->getX() + 1][hero->getY()] == '.' && !shopOpen)
 				{
 					hero->move(dir);
 					donezo = true;
@@ -125,7 +125,7 @@ int main()
 				}
 				break;
 			case 'a':
-				if (gameWorld.world[hero->getX()][hero->getY() - 1] == '.')
+				if (gameWorld.world[hero->getX()][hero->getY() - 1] == '.' && !shopOpen)
 				{
 					hero->move(dir);
 					donezo = true;
@@ -137,7 +137,7 @@ int main()
 				}
 				break;
 			case 'd':
-				if (gameWorld.world[hero->getX()][hero->getY() + 1] == '.')
+				if (gameWorld.world[hero->getX()][hero->getY() + 1] == '.' && !shopOpen)
 				{
 					hero->move(dir);
 					donezo = true;
