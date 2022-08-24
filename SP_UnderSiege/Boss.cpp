@@ -4,6 +4,6 @@ Boss::Boss()
 {
 	health = 200;
 	damage = 10;
-	x = 1;
-	y = 12;
+	x = 15;
+	y = 72;
 }
