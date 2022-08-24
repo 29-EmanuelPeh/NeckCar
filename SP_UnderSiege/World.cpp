@@ -23,16 +23,16 @@ void World::init(Character* guard1, Character* guard2, Character* guard3
 	, Character* guard16, Character* guard17, Character* guard18
 	, Character* guard19, Character* guard20, Character* guard21, Chest* chest, Chest* chest1, Chest* chest2)
 {
-	guard1->setX(1); guard1->setY(2); guard2->setX(1); guard2->setY(3); guard3->setX(1); guard3->setY(4);
-	guard4->setX(1); guard4->setY(5); guard5->setX(1); guard5->setY(6); guard6->setX(1); guard6->setY(7);
-	guard7->setX(1); guard7->setY(8); guard8->setX(1); guard8->setY(9); guard9->setX(1); guard9->setY(10);
-	guard10->setX(1); guard10->setY(11); guard11->setX(1); guard11->setY(12); guard12->setX(1); guard12->setY(13);
+	guard1->setX(3); guard1->setY(4); guard2->setX(13); guard2->setY(9); guard3->setX(16); guard3->setY(16);
+	guard4->setX(27); guard4->setY(10); guard5->setX(27); guard5->setY(16); guard6->setX(1); guard6->setY(40);
+	guard7->setX(5); guard7->setY(28); guard8->setX(17); guard8->setY(43); guard9->setX(19); guard9->setY(35);
+	guard10->setX(23); guard10->setY(30); guard11->setX(27); guard11->setY(45); guard12->setX(1); guard12->setY(13);
 	guard13->setX(1); guard13->setY(14); guard14->setX(1); guard14->setY(15); guard15->setX(1); guard15->setY(16);
 	guard16->setX(1); guard16->setY(17); guard17->setX(1); guard17->setY(18); guard18->setX(1); guard18->setY(19);
 	guard19->setX(1); guard19->setY(20); guard20->setX(1); guard20->setY(21); guard21->setX(1); guard21->setY(22);
 	chest->setX(24); chest->setY(43);
-	chest1->setX(1); chest1->setY(24);
-	chest2->setX(2); chest2->setY(24);
+	chest1->setX(6); chest1->setY(41);
+	chest2->setX(4); chest2->setY(24);
 }
 
 void World::updateWorldPositions(Character* player, Shop* shopLocate
