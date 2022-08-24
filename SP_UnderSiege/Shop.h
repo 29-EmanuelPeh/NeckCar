@@ -14,9 +14,9 @@ public:
 	Shop();
 	int getX();
 	int getY();
-	void printMenu(int& money);
+	void printMenu(int money);
 	void ResetShop();
-	Object* buy(int number , int &money);
+	Object* buy(int number , int money);
 	
 
 };

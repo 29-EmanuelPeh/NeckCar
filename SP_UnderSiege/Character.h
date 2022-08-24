@@ -30,7 +30,7 @@ public:
 	void attack(Character* enemy);
 	void addInventory(Object* object);
 	void printInventory();
-	int& getMoney();
-
+	int getMoney();
+	void setMoney(int money);
 	~Character();
 };

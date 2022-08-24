@@ -19,7 +19,7 @@ Character::Character()
 
 void Character::PrintStat(void)
 {
-    std::cout << "Player HP: " << health << "  AttackPt: " << damage << std::endl;
+    std::cout << "Player HP: " << health << "  AttackPt: " << damage << "  Money: " << money << std::endl;
 }
 
 void Character::addInventory(Object* object)
@@ -91,9 +91,14 @@ int Character::getRange()
     return 0;
 }
 
-int& Character::getMoney()
+int Character::getMoney()
 {
     return money;
+}
+
+void Character::setMoney(int m)
+{
+    money += m;
 }
 
 void Character::move(char dir)

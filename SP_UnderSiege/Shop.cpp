@@ -26,7 +26,7 @@ int Shop::getY()
 	return y;
 }
 
-void Shop::printMenu(int &money)
+void Shop::printMenu(int money)
 {
 	std::cout << "*************************************************************************************" << std::endl;
 	std::cout << "*" << "                                        Shop                                      " << " * " << std::endl;
@@ -61,17 +61,17 @@ void Shop::ResetShop()
 	buffer = "Welcome to URAYA. What would you like to purchase? 1 - Weapon |  2 - Knights Armor | 3 - Elixir";
 }
 
-Object* Shop::buy(int number, int &money)
+Object* Shop::buy(int number, int money)
 {
 	if (number-48 > shopCapacity || number-48 < 1)
 	{
-		buffer = "Item does not belong in the shop brotha";
+		buffer = "Item does not belong in the shop brotha ||  1 - Weapon |  2 - Knights Armor | 3 - Elixir";
 		return nullptr;
 	}
 	buffer = "You bought "  + accessory[number - 49]->gettypeofObject() + "!";
 	if (money < accessory[number - 49]->getPrice())
 	{
-		buffer = "You are broke! You cannot buy anymore things in the store anymore! ";
+		buffer = "You are broke! You cannot buy anymore things in the store anymore! ||  1 - Weapon |  2 - Knights Armor | 3 - Elixir ";
 		return nullptr;
 	}
 	money -= accessory[number - 49]->getPrice();

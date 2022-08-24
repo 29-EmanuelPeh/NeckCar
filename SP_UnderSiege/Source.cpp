@@ -314,7 +314,7 @@ int main()
 				{
 					donezo = false;
 					int monei = choo.open();
-					hero->getMoney() += monei;
+					hero->setMoney(monei);
 					std::cout << "You opened a choo chest! You have earned " + std::to_string(monei) + "credits" << std::endl;
 					system("pause");
 				}
@@ -325,7 +325,7 @@ int main()
 				{
 					donezo = false;
 					int monei = choo1.open();
-					hero->getMoney() += monei;
+					hero->setMoney(monei);
 					std::cout << "You opened a choo chest! You have earned " + std::to_string(monei) + "credits" << std::endl;
 					system("pause");
 				}
@@ -336,7 +336,7 @@ int main()
 				{
 					donezo = false;
 					int monei = choo2.open();
-					hero->getMoney() += monei;
+					hero->setMoney(monei);
 					std::cout << "You opened a choo chest! You have earned " + std::to_string(monei) + "credits" << std::endl;
 					system("pause");
 				}
@@ -361,13 +361,13 @@ int main()
 			// if guard has not died and is lower than 0 in health
 			if (EnemyPtr[i] != NULL && EnemyPtr[i]->getHealth() <= 0)
 			{
-				if (i < 22)
+				if (i < 21)
 				{
-					hero->getMoney() += static_cast<Guards*>(EnemyPtr[i])->getWorth();
+					hero->setMoney((rand() % 5) + 1);
 				}
 				else
 				{
-					hero->getMoney() += 50;
+					hero->setMoney(50);
 				}
 
 				//DELETE guard

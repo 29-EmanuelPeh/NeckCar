@@ -7,8 +7,3 @@ Guards::Guards()
 	x = 1;
 	y = 7;
 }
-
-int Guards::getWorth()
-{
-	return worth;
-}
