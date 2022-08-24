@@ -7,7 +7,7 @@ private:
 	int y;
 	int moneyReward;
 public:
-	Chest(int xpos, int ypos);
+	Chest();
 	int getX();
 	void setX(int px);
 	int getY();

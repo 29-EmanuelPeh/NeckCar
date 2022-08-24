@@ -25,6 +25,8 @@ void slowPrint(std::string textToPrint, int speed)
 
 int main()
 {
+	srand(static_cast <unsigned int> (time(0)));
+
 	static CONSOLE_FONT_INFOEX  fontex;
 	fontex.cbSize = sizeof(CONSOLE_FONT_INFOEX);
 	HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -60,9 +62,17 @@ int main()
 	Shop menu;
 	bool shopOpen = false;
 
-	Chest choo(1,40);
+	Chest choo;
+	Chest choo1;
+	Chest choo2;
 	
-	Character* EnemyPtr[5] = { new Guards, new Guards , new Guards, new MiniBoss, new Boss };
+	Character* EnemyPtr[23] = { new Guards, new Guards , new Guards
+								,new Guards, new Guards , new Guards
+								,new Guards, new Guards , new Guards
+								,new Guards, new Guards , new Guards
+								,new Guards, new Guards , new Guards
+								,new Guards, new Guards , new Guards
+								,new Guards, new Guards , new Guards, new MiniBoss, new Boss };
 	bool hostile = false;
 	bool donezo = false;
 	int nig2 = 0;
@@ -71,12 +81,27 @@ int main()
 	int BossSteps = 1;
 	bool FinalBossCanMove = false;
 
+	gameWorld.init(EnemyPtr[0], EnemyPtr[1], EnemyPtr[2]
+			, EnemyPtr[3], EnemyPtr[4], EnemyPtr[5]
+			, EnemyPtr[6], EnemyPtr[7], EnemyPtr[8]
+			, EnemyPtr[9], EnemyPtr[10], EnemyPtr[11]
+			, EnemyPtr[12], EnemyPtr[13], EnemyPtr[14]
+			, EnemyPtr[15], EnemyPtr[16], EnemyPtr[17]
+			, EnemyPtr[18], EnemyPtr[19], EnemyPtr[20], &choo, &choo1, &choo2);
+
 	while (hero->getHealth() != 0)
 	{
 		do
 		{
 			system("CLS");
-			gameWorld.updateWorldPositions(hero, &menu, EnemyPtr[0], EnemyPtr[1], EnemyPtr[2], &choo, EnemyPtr[3], EnemyPtr[4]);
+			gameWorld.updateWorldPositions(hero, &menu
+				, EnemyPtr[0], EnemyPtr[1], EnemyPtr[2]
+				, EnemyPtr[3], EnemyPtr[4], EnemyPtr[5]
+				, EnemyPtr[6], EnemyPtr[7], EnemyPtr[8]
+				, EnemyPtr[9], EnemyPtr[10], EnemyPtr[11]
+				, EnemyPtr[12], EnemyPtr[13], EnemyPtr[14]
+				, EnemyPtr[15], EnemyPtr[16], EnemyPtr[17]
+				, EnemyPtr[18], EnemyPtr[19], EnemyPtr[20], &choo, &choo1, &choo2, EnemyPtr[21], EnemyPtr[22]);
 
 			if (!shopOpen)
 			{
@@ -149,7 +174,7 @@ int main()
 				}
 				break;
 			case 'i':
-				for (int i = 0; i < 5; i++)
+				for (int i = 0; i < 23; i++)
 				{
 					//check if any guards in the direction chosen are present
 					if (EnemyPtr[i] != NULL)
@@ -176,7 +201,7 @@ int main()
 				}
 				break;
 			case 'k':
-				for (int i = 0; i < 5; i++)
+				for (int i = 0; i < 23; i++)
 				{
 					//check if any guards in the direction chosen are present
 					if (EnemyPtr[i] != NULL)
@@ -203,7 +228,7 @@ int main()
 				}
 				break;
 			case 'j':
-				for (int i = 0; i < 5; i++)
+				for (int i = 0; i < 23; i++)
 				{
 					//check if any guards in the direction chosen are present
 					if (EnemyPtr[i] != NULL)
@@ -230,7 +255,7 @@ int main()
 				}
 				break;
 			case 'l':
-				for (int i = 0; i < 5; i++)
+				for (int i = 0; i < 23; i++)
 				{
 					//check if any guards in the direction chosen are present
 					if (EnemyPtr[i] != NULL)
@@ -263,7 +288,7 @@ int main()
 			case 'm':
 				donezo = false;
 				system("CLS");
-				gameWorld.printWorldMap(hero, &menu, hostile, EnemyPtr[0], EnemyPtr[1], EnemyPtr[2], &choo, EnemyPtr[3], EnemyPtr[4]);
+				gameWorld.printWorldMap(hostile);
 				std::cout << std::endl << std::endl << std::endl;
 				system("pause");
 				break;
@@ -283,17 +308,34 @@ int main()
 					menu.ResetShop();
 				}
 				 else if (hero->getX() == choo.getX() - 1 && hero->getY() == choo.getY() ||
-					hero->getX() == choo.getX() && hero->getY() == choo.getY() + 1 ||
-					hero->getX() == choo.getX() + 1 && hero->getY() == choo.getY() + 1 ||
-					hero->getX() == choo.getX() + 1 && hero->getY() == choo.getY() - 1 ||
-					hero->getX() == choo.getX() - 1 && hero->getY() == choo.getY() + 1 ||
-					hero->getX() == choo.getX() - 1 && hero->getY() == choo.getY() - 1 ||
-					hero->getX() == choo.getX() && hero->getY() == choo.getY() - 1 ||
-					hero->getX() == choo.getX() + 1 && hero->getY() == choo.getY()
-					)
+						hero->getX() == choo.getX() && hero->getY() == choo.getY() + 1 ||
+						hero->getX() == choo.getX() && hero->getY() == choo.getY() - 1 ||
+						hero->getX() == choo.getX() + 1 && hero->getY() == choo.getY())
 				{
 					donezo = false;
 					int monei = choo.open();
+					hero->getMoney() += monei;
+					std::cout << "You opened a choo chest! You have earned " + std::to_string(monei) + "credits" << std::endl;
+					system("pause");
+				}
+				 else if (hero->getX() == choo1.getX() - 1 && hero->getY() == choo1.getY() ||
+					 hero->getX() == choo1.getX() && hero->getY() == choo1.getY() + 1 ||
+					 hero->getX() == choo1.getX() && hero->getY() == choo1.getY() - 1 ||
+					 hero->getX() == choo1.getX() + 1 && hero->getY() == choo1.getY())
+				{
+					donezo = false;
+					int monei = choo1.open();
+					hero->getMoney() += monei;
+					std::cout << "You opened a choo chest! You have earned " + std::to_string(monei) + "credits" << std::endl;
+					system("pause");
+				}
+				 else if (hero->getX() == choo2.getX() - 1 && hero->getY() == choo2.getY() ||
+					 hero->getX() == choo2.getX() && hero->getY() == choo2.getY() + 1 ||
+					 hero->getX() == choo2.getX() && hero->getY() == choo2.getY() - 1 ||
+					 hero->getX() == choo2.getX() + 1 && hero->getY() == choo2.getY())
+				{
+					donezo = false;
+					int monei = choo2.open();
 					hero->getMoney() += monei;
 					std::cout << "You opened a choo chest! You have earned " + std::to_string(monei) + "credits" << std::endl;
 					system("pause");
@@ -314,7 +356,7 @@ int main()
 			
 
 		//checking enemies health
-		for (int i = 0; i < 5; i++)
+		for (int i = 0; i < 23; i++)
 		{
 			// if guard has not died and is lower than 0 in health
 			if (EnemyPtr[i] != NULL && EnemyPtr[i]->getHealth() <= 0)
@@ -336,7 +378,7 @@ int main()
 
 		char temp[4] = { 'i','k' ,'j' ,'l' };
 
-		for (int i = 0; i < 5; i++)
+		for (int i = 0; i < 23; i++)
 		{
 			if (EnemyPtr[i] != NULL)
 			{
@@ -363,7 +405,7 @@ int main()
 				else
 				{
 					// check if its guards or bosses
-					if (i < 3)
+					if (i < 21)
 					{
 						// if no player near to attack, try to move
 						do
@@ -382,7 +424,14 @@ int main()
 								} while (nig2 == 0);
 
 								//updates the world positions
-								gameWorld.updateWorldPositions(hero, &menu, EnemyPtr[0], EnemyPtr[1], EnemyPtr[2], &choo, EnemyPtr[3], EnemyPtr[4]);
+								gameWorld.updateWorldPositions(hero, &menu
+									, EnemyPtr[0], EnemyPtr[1], EnemyPtr[2]
+									, EnemyPtr[3], EnemyPtr[4], EnemyPtr[5]
+									, EnemyPtr[6], EnemyPtr[7], EnemyPtr[8]
+									, EnemyPtr[9], EnemyPtr[10], EnemyPtr[11]
+									, EnemyPtr[12], EnemyPtr[13], EnemyPtr[14]
+									, EnemyPtr[15], EnemyPtr[16], EnemyPtr[17]
+									, EnemyPtr[18], EnemyPtr[19], EnemyPtr[20], &choo, &choo1, &choo2, EnemyPtr[21], EnemyPtr[22]);
 
 								// checking if the spot is empty
 								if (gameWorld.world[EnemyPtr[i]->getX() + nig2][EnemyPtr[i]->getY()] != '.')
@@ -415,7 +464,14 @@ int main()
 								} while (nig2 == 0);
 
 								//updates world positions
-								gameWorld.updateWorldPositions(hero, &menu, EnemyPtr[0], EnemyPtr[1], EnemyPtr[2], &choo, EnemyPtr[3], EnemyPtr[4]);
+								gameWorld.updateWorldPositions(hero, &menu
+									, EnemyPtr[0], EnemyPtr[1], EnemyPtr[2]
+									, EnemyPtr[3], EnemyPtr[4], EnemyPtr[5]
+									, EnemyPtr[6], EnemyPtr[7], EnemyPtr[8]
+									, EnemyPtr[9], EnemyPtr[10], EnemyPtr[11]
+									, EnemyPtr[12], EnemyPtr[13], EnemyPtr[14]
+									, EnemyPtr[15], EnemyPtr[16], EnemyPtr[17]
+									, EnemyPtr[18], EnemyPtr[19], EnemyPtr[20], &choo, &choo1, &choo2, EnemyPtr[21], EnemyPtr[22]);
 
 								if (gameWorld.world[EnemyPtr[i]->getX()][EnemyPtr[i]->getY() + nig2] != '.')
 								{
@@ -444,11 +500,18 @@ int main()
 						if (BossSteps % 2 == 0 && hostile)
 						{
 							//updates the world positions
-							gameWorld.updateWorldPositions(hero, &menu, EnemyPtr[0], EnemyPtr[1], EnemyPtr[2], &choo, EnemyPtr[3], EnemyPtr[4]);
+							gameWorld.updateWorldPositions(hero, &menu
+								, EnemyPtr[0], EnemyPtr[1], EnemyPtr[2]
+								, EnemyPtr[3], EnemyPtr[4], EnemyPtr[5]
+								, EnemyPtr[6], EnemyPtr[7], EnemyPtr[8]
+								, EnemyPtr[9], EnemyPtr[10], EnemyPtr[11]
+								, EnemyPtr[12], EnemyPtr[13], EnemyPtr[14]
+								, EnemyPtr[15], EnemyPtr[16], EnemyPtr[17]
+								, EnemyPtr[18], EnemyPtr[19], EnemyPtr[20], &choo, &choo1, &choo2, EnemyPtr[21], EnemyPtr[22]);
 
 							bool Moved = false;
 							
-							if (i == 4)
+							if (i == 22)
 							{
 								// final boss can only move when player activated final event
 								if (!FinalBossCanMove)
@@ -464,7 +527,7 @@ int main()
 								{
 									EnemyPtr[i]->move('s');
 									Moved = true;
-									if (i == 4)
+									if (i == 22)
 									{
 										BossSteps++;
 									}
@@ -473,7 +536,7 @@ int main()
 								{
 									EnemyPtr[i]->move('w');
 									Moved = true;
-									if (i == 4)
+									if (i == 22)
 									{
 										BossSteps++;
 									}
@@ -482,7 +545,7 @@ int main()
 								{
 									EnemyPtr[i]->move('a');
 									Moved = true;
-									if (i == 4)
+									if (i == 22)
 									{
 										BossSteps++;
 									}
@@ -491,7 +554,7 @@ int main()
 								{
 									EnemyPtr[i]->move('d');
 									Moved = true;
-									if (i == 4)
+									if (i == 22)
 									{
 										BossSteps++;
 									}
@@ -499,7 +562,7 @@ int main()
 								else
 								{
 									Moved = true;
-									if (i == 4)
+									if (i == 22)
 									{
 										BossSteps++;
 									}
@@ -508,7 +571,7 @@ int main()
 						}
 						else
 						{
-							if (i == 4)
+							if (i == 22)
 							{
 								BossSteps++;
 							}
@@ -520,7 +583,14 @@ int main()
 	}
 
 	system("CLS");
-	gameWorld.updateWorldPositions(hero, &menu, EnemyPtr[0], EnemyPtr[1], EnemyPtr[2], &choo, EnemyPtr[3], EnemyPtr[4]);
+	gameWorld.updateWorldPositions(hero, &menu
+		, EnemyPtr[0], EnemyPtr[1], EnemyPtr[2]
+		, EnemyPtr[3], EnemyPtr[4], EnemyPtr[5]
+		, EnemyPtr[6], EnemyPtr[7], EnemyPtr[8]
+		, EnemyPtr[9], EnemyPtr[10], EnemyPtr[11]
+		, EnemyPtr[12], EnemyPtr[13], EnemyPtr[14]
+		, EnemyPtr[15], EnemyPtr[16], EnemyPtr[17]
+		, EnemyPtr[18], EnemyPtr[19], EnemyPtr[20], &choo, &choo1, &choo2, EnemyPtr[21], EnemyPtr[22]);
 	gameWorld.printWorld(hero, hostile);
 	hero->PrintStat();
 
