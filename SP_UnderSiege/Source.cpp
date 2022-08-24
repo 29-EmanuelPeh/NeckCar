@@ -361,7 +361,15 @@ int main()
 			// if guard has not died and is lower than 0 in health
 			if (EnemyPtr[i] != NULL && EnemyPtr[i]->getHealth() <= 0)
 			{
-				hero->getMoney() += static_cast<Guards*>(EnemyPtr[i])->getWorth();
+				if (i < 22)
+				{
+					hero->getMoney() += static_cast<Guards*>(EnemyPtr[i])->getWorth();
+				}
+				else
+				{
+					hero->getMoney() += 50;
+				}
+
 				//DELETE guard
 				delete EnemyPtr[i];
 				EnemyPtr[i] = NULL;
