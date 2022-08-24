@@ -92,6 +92,22 @@ void World::updateWorldPositions(Character* player, Shop* shopLocate
 			{
 				world[x][y] = char(176);
 			}
+			else if (x == 9 && (y == 55 || y == 56 || y == 57)
+					|| x == 10 && (y == 55 || y == 56 || y == 57)
+					|| x == 11 && (y == 55 || y == 56 || y == 57)
+					|| x == 19 && (y == 55 || y == 56 || y == 57)
+					|| x == 20 && (y == 55 || y == 56 || y == 57)
+					|| x == 21 && (y == 55 || y == 56 || y == 57)
+					|| x == 14 && (y == 4 || y == 5 || y == 21 || y == 22)
+					|| x == 15 && (y == 4 || y == 5 || y == 21 || y == 22)
+					|| x == 16 && (y == 4 || y == 5 || y == 21 || y == 22)
+					|| x == 3 && (y == 56 || y == 57 || y == 58 || y == 59 || y == 60)
+					|| x == 4 && (y == 56 || y == 57 || y == 58 || y == 59 || y == 60)
+					|| x == 26 && (y == 56 || y == 57 || y == 58 || y == 59 || y == 60)
+					|| x == 27 && (y == 56 || y == 57 || y == 58 || y == 59 || y == 60))
+			{
+				world[x][y] = char(5);
+			}
 			else if (y == 50 && (x == 14 || x == 15 || x == 16) && miniboss != NULL)
 			{
 				world[x][y] = 'X';
@@ -245,6 +261,10 @@ void World::printWorld(Character* player, bool hostile)
 			{
 				SetConsoleTextAttribute(h, 0x01);
 			}
+			else if (world[player->getX() + tempX][player->getY() + tempY] == char(5))
+			{
+				SetConsoleTextAttribute(h, 0x0A);
+			}
 			else if (player != NULL && world[player->getX() + tempX][player->getY() + tempY] == 'G')
 			{
 				if (hostile)
@@ -323,6 +343,10 @@ void World::printWorldMap(bool hostile)
 			else if (world[x][y] == char(36))
 			{
 				SetConsoleTextAttribute(h, 0x01);
+			}
+			else if (world[x][y] == char(5))
+			{
+				SetConsoleTextAttribute(h, 0x0A);
 			}
 			else if (world[x][y] == 'G')
 			{
