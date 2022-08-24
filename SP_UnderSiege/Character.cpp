@@ -78,7 +78,12 @@ int Character::getArmor()
 
 void Character::setArmor(int a)
 {
-    armor += a;
+    //check if armor is not 0 or 100, set to new value
+    if (a <= 100)
+        armor = a;
+    //check if armor is over 100, set it to 100
+    else if (a >= 100)
+        armor = 100;
 }
 
 int Character::getDamage()
@@ -196,8 +201,25 @@ bool Character::checkDir(char dir, Character* enemy)
 
 void Character::attack(Character* enemy)
 {
-    int temp = enemy->getHealth();
-    enemy->setHealth(temp - damage);
+    if (enemy->getArmor() > 0)
+    {
+        int Armortemp = enemy->getArmor();
+        enemy->setArmor(Armortemp - damage);
+
+        if (enemy->getArmor() < 0)
+        {
+            int armortemp2 = enemy->getArmor();
+            enemy->setArmor(0);
+
+            int temp = enemy->getHealth();
+            enemy->setHealth(temp + armortemp2);
+        }
+    }
+    else
+    {
+        int temp = enemy->getHealth();
+        enemy->setHealth(temp - damage);
+    }
 }
 
 Character::~Character()
