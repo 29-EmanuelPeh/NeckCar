@@ -46,7 +46,7 @@ void Dialogue::CastleGuardTalk()
 
     slowPrint("PLAYER: How do I get permission? I need to speak to one of the general that goes by the name NAME urgently.", 10); Sleep(500); std::cout << std::endl << std::endl;
 
-    slowPrint("GUARD: Hmm", 10); slowPrint(".....", 100); slowPrint("Talk to our superior for access, I think I saw him near the south of the city.", 10); std::cout << std::endl << std::endl;
+    slowPrint("GUARD: Hmm", 10); slowPrint(".....", 500); slowPrint("Talk to our superior for access, I think I saw him near the south of the city.", 10); std::cout << std::endl << std::endl;
 
     system("pause");
 }
@@ -57,7 +57,7 @@ void Dialogue::MeetSuperiorFirstTime()
 
     slowPrint("SUPERIOR: Hm? Who are you?", 10); Sleep(500); std::cout << std::endl << std::endl;
 
-    slowPrint("PLAYER: So you are alive", 10); slowPrint(".....", 100); slowPrint("You are NAME's partner, I remember you.", 10); Sleep(500); std::cout << std::endl << std::endl;
+    slowPrint("PLAYER: So you are alive", 10); slowPrint(".....", 500); slowPrint("You are NAME's partner, I remember you.", 10); Sleep(500); std::cout << std::endl << std::endl;
 
     slowPrint("(You pull out your weapon, preparing to fight.)", 10); std::cout << std::endl << std::endl;
 
@@ -68,7 +68,7 @@ void Dialogue::BeatSuperiorFirstTime()
 {
     slowPrint("SUPERIOR: Arghh!", 100); Sleep(1000); slowPrint(" I-I remember you now, why are you doing this?", 30); std::cout << std::endl << std::endl;
 
-    slowPrint("PLAYER: .....", 100); Sleep(1000); slowPrint("One down, one to go.", 30); Sleep(1000); std::cout << std::endl << std::endl;
+    slowPrint("PLAYER: ", 10); slowPrint(".....", 500); Sleep(1000); slowPrint("One down, one to go.", 30); Sleep(1000); std::cout << std::endl << std::endl;
 
     slowPrint("(It's time to find NAME at the Castle.)", 10); std::cout << std::endl << std::endl;
 
@@ -88,21 +88,21 @@ void Dialogue::DefeatBoss()
 {
     slowPrint("(NAME falls to the ground beneath you, struggling in pain.)", 30); Sleep(500); std::cout << std::endl << std::endl;
 
-    slowPrint("NAME: After what we did", 30); slowPrint(".....", 100); slowPrint("This is how you repay us?", 30); Sleep(500); std::cout << std::endl << std::endl;
+    slowPrint("NAME: After what we did", 30); slowPrint(".....", 500); slowPrint("This is how you repay us?", 30); Sleep(500); std::cout << std::endl << std::endl;
 
     slowPrint("PLAYER: What do you mean, you destroyed the village!", 10); Sleep(500); std::cout << std::endl << std::endl;
 
-    slowPrint("NAME: No! We tried to saved the village from the Goblin's attack, but we could not win.", 10); Sleep(500); std::cout << std::endl;
-    slowPrint("Before escaping, I saw a baby crying while in his dead parents arms, and I took him away to a orphanage.", 30); Sleep(500); std::cout << std::endl;
-    slowPrint("Please", 30); slowPrint(".....", 100); slowPrint("You don't need to do this.", 30); Sleep(2000); std::cout << std::endl;
+    slowPrint("NAME: No! It was the Goblin's who did it! We tried to saved the village from the Goblin's attack, but we could not win.", 10); Sleep(500); std::cout << std::endl;
+    slowPrint("Before escaping, I saw a baby crying while in his dead parents arms, and I took him away to a orphanage.", 10); Sleep(500); std::cout << std::endl;
+    slowPrint("Please", 30); slowPrint(".....", 500); slowPrint("You don't need to do this.", 10); Sleep(2000); std::cout << std::endl;
 
     std::cout << "Spare Him. (A) or Kill him. (B)" << std::endl;
     std::cin >> choice;
     if (choice == 'A')
     {
-        slowPrint("I'm sorry", 30); slowPrint(".....", 100); slowPrint("I-I didn't know. I killed so many.....", 30); std::cout << std::endl << std::endl;
+        slowPrint("I'm sorry", 30); slowPrint(".....", 500); slowPrint("I-I didn't know. I killed so many.....", 10); std::cout << std::endl << std::endl;
 
-        slowPrint("The deed is done", 30); slowPrint(".....", 100); slowPrint("The dead cannot come back. Run away now kid.", 30); Sleep(2000); std::cout << std::endl << std::endl;
+        slowPrint("The deed is done", 30); slowPrint(".....", 500); slowPrint("The dead cannot come back. Run away now kid.", 10); Sleep(2000); std::cout << std::endl << std::endl;
 
         slowPrint("GOOD ENDING", 100); std::cout << std::endl << std::endl;
 
@@ -110,7 +110,7 @@ void Dialogue::DefeatBoss()
     }
     else
     {
-        slowPrint("(Player kills NAME, avenging his dead family. Not knowing the full truth", 50); slowPrint(".....)", 100); std::cout << std::endl << std::endl;
+        slowPrint("(Player kills NAME, avenging his dead family. Not knowing the full truth", 50); slowPrint(".....)", 500); std::cout << std::endl << std::endl;
 
         slowPrint("(As NAME draws his last breath, Player breaks down crying, for the revenge that he long yearned for", 50); std::cout << std::endl;
         slowPrint("did not grant him peace.", 50); std::cout << std::endl;
