@@ -28,7 +28,17 @@ void World::updateWorldPositions(Character* player, Shop* shopLocate, Character*
 			|| x == 14 && (y == 11 || y == 15)
 			|| x == 15 && (y == 11 || y == 15)
 			|| x == 16 && (y == 11 || y == 15)
-			|| x == 17 && (y == 11 || y == 12 || y == 13 || y == 14 || y == 15))
+			|| x == 17 && (y == 11 || y == 12 || y == 13 || y == 14 || y == 15)
+			|| x == 4 && (y == 4 || y == 5 || y == 6 || y == 7 || y == 8 || y == 18 || y == 19 || y == 20 || y == 21 || y == 22)
+			|| x == 5 && (y == 4 || y == 5 || y == 6 || y == 7 || y == 8 || y == 18 || y == 19 || y == 20 || y == 21 || y == 22)
+			|| x == 6 && (y == 4 || y == 5 || y == 6 || y == 7 || y == 8 || y == 18 || y == 19 || y == 20 || y == 21 || y == 22)
+			|| x == 7 && (y == 4 || y == 5 || y == 6 || y == 7 || y == 8 || y == 18 || y == 19 || y == 20 || y == 21 || y == 22)
+			|| x == 8 && (y == 4 || y == 5 || y == 6 || y == 7 || y == 8 || y == 18 || y == 19 || y == 20 || y == 21 || y == 22)
+			|| x == 22 && (y == 4 || y == 5 || y == 21 || y == 22)
+			|| x == 23 && (y == 4 || y == 5 || y == 21 || y == 22)
+			|| x == 24 && (y == 4 || y == 5 || y == 21 || y == 22)
+			|| x == 25 && (y == 4 || y == 5 || y == 21 || y == 22)
+			|| x == 26 && (y == 4 || y == 5 || y == 21 || y == 22))
 			{
 				world[x][y] = char(254);
 			}
@@ -37,6 +47,10 @@ void World::updateWorldPositions(Character* player, Shop* shopLocate, Character*
 				  || (x == 16 && (y == 12 || y == 13 || y == 14)))
 			{
 				world[x][y] = char(176);
+			}
+			else if (y == 25 && (x == 14 || x == 15 || x == 16) && miniboss != NULL)
+			{
+				world[x][y] = 'X';
 			}
 			else if (x == player->getX() && y == player->getY())
 			{
@@ -62,11 +76,11 @@ void World::updateWorldPositions(Character* player, Shop* shopLocate, Character*
 			{
 				world[x][y] = chest->getchestIcon();
 			}
-			else if (x == miniboss->getX() && y == miniboss->getY())
+			else if (miniboss != NULL && x == miniboss->getX() && y == miniboss->getY())
 			{
 				world[x][y] = 'M';
 			}
-			else if (x == boss->getX() && y == boss->getY())
+			else if (boss != NULL && x == boss->getX() && y == boss->getY())
 			{
 				world[x][y] = char(225);
 			}
@@ -122,11 +136,11 @@ void World::printWorld(Character* player, bool hostile)
 			{
 				SetConsoleTextAttribute(h, 0x0E);
 			}
-			else if (world[player->getX() + tempX][player->getY() + tempY] == 'M')
+			else if (player != NULL && world[player->getX() + tempX][player->getY() + tempY] == 'M')
 			{
 				SetConsoleTextAttribute(h, 0x06);
 			}
-			else if (world[player->getX() + tempX][player->getY() + tempY] == char(225))
+			else if (player != NULL && world[player->getX() + tempX][player->getY() + tempY] == char(225))
 			{
 				SetConsoleTextAttribute(h, 0x0C);
 			}
@@ -214,6 +228,8 @@ void World::printWorldMap(Character* player, Shop* shopLocate, bool hostile, Cha
 		}
 		std::cout << std::endl;
 	}
+
+	std::cout << "                       CITY                                              MARKET                                             CASTLE" << std::endl;
 }
 
 

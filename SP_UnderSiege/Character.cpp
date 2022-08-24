@@ -5,7 +5,7 @@
 Character::Character()
 {
 	health = 100;
-	damage = 5;
+	damage = 100;
 	range = 1;
     money = 0;
 	x = 1;
