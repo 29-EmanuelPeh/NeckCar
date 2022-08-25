@@ -769,11 +769,79 @@ int main()
 	//LOSE
 	if (hero->getHealth() == 0)
 	{
+		delete hero;
+
+		//delete remaining enemies if have
+		for (size_t i = 0; i < 23; i++)
+		{
+			if (EnemyPtr[i] != NULL)
+			{
+				delete EnemyPtr[i];
+				EnemyPtr[i] = NULL;
+			}
+		}
+
+		//delete remaining chests if have
+		if (choo != NULL)
+		{
+			delete choo;
+			choo = NULL;
+		}
+		if (choo1 != NULL)
+		{
+			delete choo1;
+			choo1 = NULL;
+		}
+		if (choo2 != NULL)
+		{
+			delete choo2;
+			choo2 = NULL;
+		}
+		if (choo3 != NULL)
+		{
+			delete choo3;
+			choo3 = NULL;
+		}
+
 		consoletext.Dead();
 	}
 	//WIN
 	else if (EnemyPtr[22] == NULL)
 	{
+		delete hero;
+
+		//delete remaining enemies if have
+		for (size_t i = 0; i < 23; i++)
+		{
+			if (EnemyPtr[i] != NULL)
+			{
+				delete EnemyPtr[i];
+				EnemyPtr[i] = NULL;
+			}
+		}
+
+		//delete remaining chests if have
+		if (choo != NULL)
+		{
+			delete choo;
+			choo = NULL;
+		}
+		if (choo1 != NULL)
+		{
+			delete choo1;
+			choo1 = NULL;
+		}
+		if (choo2 != NULL)
+		{
+			delete choo2;
+			choo2 = NULL;
+		}
+		if (choo3 != NULL)
+		{
+			delete choo3;
+			choo3 = NULL;
+		}
+
 		consoletext.DefeatBoss();
 	}
 
