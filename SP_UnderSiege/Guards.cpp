@@ -2,7 +2,7 @@
 
 Guards::Guards()
 {
-	health = 10;
+	health = 30;
 	damage = 5;
 	x = 1;
 	y = 7;

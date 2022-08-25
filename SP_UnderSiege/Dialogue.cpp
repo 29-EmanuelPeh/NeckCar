@@ -122,13 +122,13 @@ void Dialogue::DefeatBoss()
             slowPrint("Rueben kills Raif, avenging his dead family. Not knowing the full truth", 30); slowPrint(".....", 500); std::cout << std::endl << std::endl;
 
             slowPrint("As Raif draws his last breath, Rueben breaks down crying, for the revenge that he long yearned for", 30); std::cout << std::endl;
-            slowPrint("did not grant him peace.", 50); Sleep(2000); std::cout << std::endl;
+            slowPrint("did not grant him peace.", 50); Sleep(2000); std::cout << std::endl << std::endl;
 
             SetConsoleTextAttribute(h, 0x04);
             slowPrint("BAD ENDING", 200); Sleep(2000); std::cout << std::endl << std::endl;
             SetConsoleTextAttribute(h, 0x0f);
 
-            slowPrint("In the end, Rueben was arrested and executed in the kingdom of Uraya for mass murder.", 50); std::cout << std::endl << std::endl;
+            slowPrint("In the end, Rueben was arrested and executed in the kingdom of URAYA for mass murder.", 50); std::cout << std::endl << std::endl;
         }
     } while (choice != 'A' && choice != 'B');
 }
