@@ -38,9 +38,9 @@ void Shop::printMenu(int money)
 	std::cout << "*************************************************************************************" << std::endl;
 	std::cout << "*" << "                                        Shop                                      " << " * " << std::endl;
 	std::cout << "*" << "                                        ----                                      " << " * " << std::endl;
-	std::cout << "*" << "     (1) Weapon:  40 credits                                                      " << " * " << std::endl;
+	std::cout << "*" << "     (1) Weapon:  30 credits                                                      " << " * " << std::endl;
 	std::cout << "*" << "                                                                                  " << " * " << std::endl;
-	std::cout << "*" << "     (2) Knights Armor: 50 credits                                                " << " * " << std::endl;
+	std::cout << "*" << "     (2) Knights Armor: 30 credits                                                " << " * " << std::endl;
 	std::cout << "*" << "                                                                                  " << " * " << std::endl;
 	std::cout << "*" << "     (3) Elixir:  10 credits                                                      " << " * " << std::endl;
 	std::cout << "*" << "                                                                                  " << " * " << std::endl;

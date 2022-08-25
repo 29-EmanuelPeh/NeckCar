@@ -40,7 +40,7 @@ void Dialogue::introHint()
     slowPrint("(It's a good idea to lay low for now. The Guards will not attack me, but I should still be careful. I should check out the Castle first.)", 10); std::cout << std::endl << std::endl;
 
     SetConsoleTextAttribute(h, 0x03);
-    slowPrint("(Guards are not hostile to you and cannot be attacked.)", 10);
+    slowPrint("(Guards are not hostile to you and cannot be attacked.)", 10); std::cout << std::endl << std::endl;
     SetConsoleTextAttribute(h, 0x0f);
 
     system("pause");
@@ -91,7 +91,7 @@ void Dialogue::MeetBoss()
 {
     slowPrint("RAIF: You..... Its you! You're alive! What.....What have you done!?", 10); Sleep(500); std::cout << std::endl << std::endl;
 
-    slowPrint("RUEBEN: I finally found you after all these years, I also had to pay your friend a little visit.", 10); std::cout << std::endl << std::endl;
+    slowPrint("RUEBEN: I finally found you after all these years, I also had to pay your friend a little visit.", 10); Sleep(500); std::cout << std::endl << std::endl;
 
     slowPrint("RAIF: RAAAAAAA!!!", 10); std::cout << std::endl << std::endl;
 
@@ -108,9 +108,9 @@ void Dialogue::DefeatBoss()
 
     slowPrint("RUEBEN: What do you mean, you destroyed the village!", 10); Sleep(500); std::cout << std::endl << std::endl;
 
-    slowPrint("RAIF: No! It was the Goblin's who did it! We tried to saved the village from the Goblin's attack, but we could not win.", 10); Sleep(500); std::cout << std::endl;
+    slowPrint("RAIF: No! It was the Goblins who did it! We tried to saved the village from the Goblin's attack, but we could not win.", 10); Sleep(500); std::cout << std::endl;
     slowPrint("Before escaping, I found a baby in his dead parents arms, and I took him away to a orphanage.", 10); Sleep(500); std::cout << std::endl;
-    slowPrint("Please", 100); slowPrint(".....", 500); slowPrint("You don't need to do this.", 50); Sleep(2000); std::cout << std::endl;
+    slowPrint("Please", 100); slowPrint(".....", 500); slowPrint("You don't need to do this.", 50); Sleep(2000); std::cout << std::endl << std::endl;
 
     do
     {

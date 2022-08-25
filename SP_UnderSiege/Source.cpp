@@ -53,26 +53,26 @@ int main()
 	bool dialogueHappening = false;
 	int dialogueNum = 0;
 
-	//background story
-	std::cout << "   / |                                                       /|" << std::endl;
-	std::cout << "  |  |                                                      | |" << std::endl;
-	std::cout << "/---- |                                                   /----|" << std::endl;
-	std::cout << "[______]                                                 [______]" << std::endl;
-	std::cout << " |    |         _____                        _____        |    |" << std::endl;
-	std::cout << "|[]  |        [     ]                      [     ]        |  []|" << std::endl;
-	std::cout << "|    |       [_______][ ][ ][ ][][ ][ ][ ][_______]       |    |" << std::endl;
-	std::cout << " |    [ ][ ][ ]|     |  ,----------------,  |     |[ ][ ][ ]    |" << std::endl;
-	std::cout << " |             |     |/'    ____..____    ' |     |             |" << std::endl;
-	std::cout << "  |  []        |     |    /'    ||    '    |     |        []  /" << std::endl;
-	std::cout << "   |      []   |     |   |o     ||     o|   |     |  []       |" << std::endl;
-	std::cout << "   |           |  _  |   |     _||_     |   |  _  |           |" << std::endl;
-	std::cout << "   |   []      | (_) |   |    (_||_)    |   | (_) |       []  |" << std::endl;
-	std::cout << "   |           |     |   |     (||)     |   |     |           |" << std::endl;
-	std::cout << "   |           |     |   |      ||      |   |     |           |" << std::endl;
-	std::cout << " /''           |     |   |o     ||     o|   |     |           '' " << std::endl;
-	std::cout << "[_____________[_______]--'------''------'--[_______]_____________]" << std::endl << std::endl << std::endl << std::endl;
+	////background story
+	//std::cout << "   / |                                                       /|" << std::endl;
+	//std::cout << "  |  |                                                      | |" << std::endl;
+	//std::cout << "/---- |                                                   /----|" << std::endl;
+	//std::cout << "[______]                                                 [______]" << std::endl;
+	//std::cout << " |    |         _____                        _____        |    |" << std::endl;
+	//std::cout << "|[]  |        [     ]                      [     ]        |  []|" << std::endl;
+	//std::cout << "|    |       [_______][ ][ ][ ][][ ][ ][ ][_______]       |    |" << std::endl;
+	//std::cout << " |    [ ][ ][ ]|     |  ,----------------,  |     |[ ][ ][ ]    |" << std::endl;
+	//std::cout << " |             |     |/'    ____..____    ' |     |             |" << std::endl;
+	//std::cout << "  |  []        |     |    /'    ||    '    |     |        []  /" << std::endl;
+	//std::cout << "   |      []   |     |   |o     ||     o|   |     |  []       |" << std::endl;
+	//std::cout << "   |           |  _  |   |     _||_     |   |  _  |           |" << std::endl;
+	//std::cout << "   |   []      | (_) |   |    (_||_)    |   | (_) |       []  |" << std::endl;
+	//std::cout << "   |           |     |   |     (||)     |   |     |           |" << std::endl;
+	//std::cout << "   |           |     |   |      ||      |   |     |           |" << std::endl;
+	//std::cout << " /''           |     |   |o     ||     o|   |     |           '' " << std::endl;
+	//std::cout << "[_____________[_______]--'------''------'--[_______]_____________]" << std::endl << std::endl << std::endl << std::endl;
 
-	consoletext.intro();
+	//consoletext.intro();
 
 	World gameWorld;
 	Character* hero = new Character;
@@ -218,7 +218,7 @@ int main()
 				if (!dialogueHappening)
 				{
 					hero->PrintStat();
-					std::cout << "What do you want to do?(WASD to move, IJKL to attack, M for map, E to shop, Q to quit): " << std::endl;
+					std::cout << "What do you want to do?(WASD to move, IJKL to attack, H to heal, M for map, E to interact): " << std::endl;
 				}
 				else
 				{

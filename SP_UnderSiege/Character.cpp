@@ -7,7 +7,7 @@ Character::Character()
 	health = 100;
 	damage = 10;
     armor = 0;
-    healthpotion = 0;
+    healthpotion = 3;
 	range = 1;
     money = 0;
 	x = 1;
