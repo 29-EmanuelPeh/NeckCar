@@ -35,7 +35,13 @@ void Dialogue::intro()
 
 void Dialogue::introHint()
 {
-    slowPrint("(It's a good idea to lay low for now. I should check out the Castle first.)", 10); std::cout << std::endl << std::endl;
+    HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+
+    slowPrint("(It's a good idea to lay low for now. The Guards will not attack me, but I should still be careful. I should check out the Castle first.)", 10); std::cout << std::endl << std::endl;
+
+    SetConsoleTextAttribute(h, 0x03);
+    slowPrint("(Guards are not hostile to you and cannot be attacked.)", 10);
+    SetConsoleTextAttribute(h, 0x0f);
 
     system("pause");
 }
@@ -53,6 +59,8 @@ void Dialogue::CastleGuardTalk()
 
 void Dialogue::MeetSuperiorFirstTime()
 {
+    HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+
     slowPrint("RUEBEN: Hey! I need to talk to yo-", 10); Sleep(1000); std::cout << std::endl << std::endl;
 
     slowPrint("SUPERIOR: Hm? Who are you?", 10); Sleep(500); std::cout << std::endl << std::endl;
@@ -60,6 +68,10 @@ void Dialogue::MeetSuperiorFirstTime()
     slowPrint("RUEBEN: So you are alive", 10); slowPrint(".....", 500); slowPrint("You are Raif's partner, Bryan, I remember you.", 30); Sleep(500); std::cout << std::endl << std::endl;
 
     slowPrint("(You pull out your weapon, preparing to fight.)", 10); std::cout << std::endl << std::endl;
+
+    SetConsoleTextAttribute(h, 0x03);
+    slowPrint("(Guards are now hostile to you and can be attacked.)", 10); std::cout << std::endl << std::endl;
+    SetConsoleTextAttribute(h, 0x0f);
 
     system("pause");
 }
@@ -100,9 +112,9 @@ void Dialogue::DefeatBoss()
     slowPrint("Before escaping, I found a baby in his dead parents arms, and I took him away to a orphanage.", 10); Sleep(500); std::cout << std::endl;
     slowPrint("Please", 100); slowPrint(".....", 500); slowPrint("You don't need to do this.", 50); Sleep(2000); std::cout << std::endl;
 
-    std::cout << "Spare Him. (A) or Kill him. (B) " << std::endl;
     do
     {
+        std::cout << "Spare Him. (A) or Kill him. (B) " << std::endl;
         std::cin >> choice;
 
         if (choice == 'A')
