@@ -64,11 +64,13 @@ void Dialogue::introHint()
 
 void Dialogue::CastleGuardTalk()
 {
+    HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+
     slowPrint("GUARD: Hey you! You can't go in there! It's only for authorized personnel only.", 10); Sleep(500); std::cout << std::endl << std::endl;
 
     slowPrint("RUEBEN: How do I get permission? I need to speak to one of the general that goes by the name Raif urgently.", 10); Sleep(500); std::cout << std::endl << std::endl;
 
-    slowPrint("GUARD: Hmm", 10); slowPrint(".....", 500); slowPrint("Talk to our superior for access, I think I saw him near the south of the city.", 10); std::cout << std::endl << std::endl;
+    slowPrint("GUARD: Hmm", 10); slowPrint(".....", 500); slowPrint("Talk to our superior for access, I think I saw him near the ", 10);     SetConsoleTextAttribute(h, 0x03); slowPrint("South of the City.", 10); SetConsoleTextAttribute(h, 0x0f); std::cout << std::endl << std::endl;
 
     system("pause");
 }
@@ -111,9 +113,9 @@ void Dialogue::MeetBoss()
 {
     slowPrint("RAIF: You..... Its you! You're alive! What.....What have you done!?", 10); Sleep(500); std::cout << std::endl << std::endl;
 
-    slowPrint("RUEBEN: I finally found you after all these years, I also had to pay your friend a little visit.", 10); Sleep(500); std::cout << std::endl << std::endl;
+    slowPrint("RUEBEN: I finally found you after all these years, I also had to pay your friend a little visit.", 10); Sleep(1000); std::cout << std::endl << std::endl;
 
-    slowPrint("RAIF: RAAAAAAA!!!", 10); std::cout << std::endl << std::endl;
+    slowPrint("RAIF: ", 10); slowPrint("RAAAAAAAA!!", 50); std::cout << std::endl << std::endl;
 
     system("pause");
 }
@@ -139,6 +141,18 @@ void Dialogue::DefeatBoss()
 
         if (choice == 'A')
         {
+            system("CLS");
+
+            std::cout << ".                        __..,,... .,,,,,." << std::endl;
+            std::cout << "                     ''''        ,'        ` ." << std::endl;
+            std::cout << "                               ,'  ,.  ..      `  ." << std::endl;
+            std::cout << "                               `.,'      ..           `" << std::endl;
+            std::cout << "                     __..,.             .  ..     ." << std::endl;
+            std::cout << "                            ` .       .  `.  .` `" << std::endl;
+            std::cout << "                                ,  `.  `.  `._|,.." << std::endl;
+            std::cout << "                                  .  `.  `..'" << std::endl;
+            std::cout << "                                   ` -'`''" << std::endl << std::endl;
+
             slowPrint("RUEBEN: I'm sorry", 30); slowPrint(".....", 500); slowPrint("I-I didn't know. I killed so many.....", 50); std::cout << std::endl << std::endl;
 
             slowPrint("RAIF: The deed is done", 50); slowPrint(".....", 500); slowPrint("The dead cannot come back. Run away now kid.", 10); Sleep(2000); std::cout << std::endl << std::endl;
@@ -151,6 +165,19 @@ void Dialogue::DefeatBoss()
         }
         else if (choice == 'B')
         {
+            system("CLS");
+
+            std::cout << "              .-." << std::endl;
+            std::cout << "              | |____________________________________________________" << std::endl;
+            std::cout << " _ _ _ _ _ _ _| |                                                  .'`." << std::endl;
+            std::cout << "|_|_|_|_|_|_|_| |------------------------------------------------.'****>" << std::endl;
+            std::cout << "`.            | |_______________________________________________.'***.'" << std::endl;
+            std::cout << "  `.        .'| |                                               `**'" << std::endl;
+            std::cout << "    `-.___.'  `-'                                              .'*`." << std::endl;
+            std::cout << "                                                               `._.' ." << std::endl;
+            std::cout << "                                                               .   .'*`." << std::endl;
+            std::cout << "                                                            .'*`. `._.'" << std::endl << std::endl;
+
             slowPrint("Rueben kills Raif, avenging his dead family. Not knowing the full truth", 30); slowPrint(".....", 500); std::cout << std::endl << std::endl;
 
             slowPrint("As Raif draws his last breath, Rueben breaks down crying, for the revenge that he long yearned for", 30); std::cout << std::endl;
@@ -168,6 +195,30 @@ void Dialogue::DefeatBoss()
 void Dialogue::Dead()
 {
     HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+
+    system("CLS");
+
+    std::cout << "               ..." << std::endl;
+    std::cout << "             ;::::;" << std::endl;
+    std::cout << "           ;::::; :;" << std::endl;
+    std::cout << "         ;:::::'   :;" << std::endl;
+    std::cout << "        ;:::::;     ;." << std::endl;
+    std::cout << "       ,:::::'       ;           OOO" << std::endl;
+    std::cout << "       ::::::;       ;          OOOOO" << std::endl;
+    std::cout << "       ;:::::;       ;         OOOOOOOO" << std::endl;
+    std::cout << "      ,;::::::;     ;'         / OOOOOOO" << std::endl;
+    std::cout << "    ;:::::::::`. ,,,;.        /  / DOOOOOO" << std::endl;
+    std::cout << "  .';:::::::::::::::::;,     /  /     DOOOO" << std::endl;
+    std::cout << " ,::::::;::::::;;;;::::;,   /  /        DOOO" << std::endl;
+    std::cout << ";`::::::`'::::::;;;::::: ,#/  /          DOOO" << std::endl;
+    std::cout << ":`:::::::`;::::::;;::: ;::#  /            DOOO" << std::endl;
+    std::cout << "::`:::::::`;:::::::: ;::::# /              DOO" << std::endl;
+    std::cout << "`:`:::::::`;:::::: ;::::::#/               DOO" << std::endl;
+    std::cout << " :::`:::::::`;; ;:::::::::##                OO" << std::endl;
+    std::cout << " ::::`:::::::`;::::::::;:::#                OO" << std::endl;
+    std::cout << " `:::::`::::::::::::;'`:;::#                O" << std::endl;
+    std::cout << " `:::::`::::::::;' /  / `:#" << std::endl;
+    std::cout << "   ::::::`:::::;'  /  /   `#" << std::endl << std::endl;
 
     slowPrint("RUEBEN: Argghhh!!", 50); Sleep(500); std::cout << std::endl << std::endl;
 
