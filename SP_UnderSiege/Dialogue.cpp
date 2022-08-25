@@ -143,7 +143,7 @@ void Dialogue::DefeatBoss()
         {
             system("CLS");
 
-            std::cout << ".                        __..,,... .,,,,,." << std::endl;
+            std::cout << "                         __..,,... .,,,,,." << std::endl;
             std::cout << "                     ''''        ,'        ` ." << std::endl;
             std::cout << "                               ,'  ,.  ..      `  ." << std::endl;
             std::cout << "                               `.,'      ..           `" << std::endl;
@@ -161,7 +161,7 @@ void Dialogue::DefeatBoss()
             slowPrint("GOOD ENDING", 200); Sleep(2000); std::cout << std::endl << std::endl;
             SetConsoleTextAttribute(h, 0x0f);
 
-            slowPrint("In the end, the Rueben runs away from the kingdom and started his new life as a farmer.", 30); std::cout << std::endl << std::endl;
+            slowPrint("In the end, Rueben ran away from the kingdom and started his new life as a farmer.", 30); std::cout << std::endl << std::endl;
         }
         else if (choice == 'B')
         {
