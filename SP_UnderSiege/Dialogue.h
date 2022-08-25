@@ -16,6 +16,7 @@ public:
 	void BeatSuperiorFirstTime();
 	void MeetBoss();
 	void DefeatBoss();
+	void Dead();
 	int speed;
 
 };

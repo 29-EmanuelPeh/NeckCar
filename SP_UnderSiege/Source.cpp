@@ -11,6 +11,11 @@
 #include "MiniBoss.h"
 #include "Dialogue.h"
 
+void ClearScreen()
+{
+	COORD cursorPosition;	cursorPosition.X = 0;	cursorPosition.Y = 0;	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), cursorPosition);
+}
+
 int main()
 {
 	srand(static_cast <unsigned int> (time(0)));
@@ -48,26 +53,26 @@ int main()
 	bool dialogueHappening = false;
 	int dialogueNum = 0;
 
-	//background story
-	std::cout << "   / |                                                       /|" << std::endl;
-	std::cout << "  |  |                                                      | |" << std::endl;
-	std::cout << "/---- |                                                   /----|" << std::endl;
-	std::cout << "[______]                                                 [______]" << std::endl;
-	std::cout << " |    |         _____                        _____         |    |" << std::endl;
-	std::cout << "|[]  |        [     ]                      [     ]        |  []|" << std::endl;
-	std::cout << "|    |       [_______][ ][ ][ ][][ ][ ][ ][_______]       |    |" << std::endl;
-	std::cout << " |    [ ][ ][ ]|     |  ,----------------,  |     |[ ][ ][ ]    |" << std::endl;
-	std::cout << " |             |     |/'    ____..____    ' |     |             |" << std::endl;
-	std::cout << "  |  []        |     |    /'    ||    '    |     |        []  /" << std::endl;
-	std::cout << "   |      []   |     |   |o     ||     o|   |     |  []       |" << std::endl;
-	std::cout << "   |           |  _  |   |     _||_     |   |  _  |           |" << std::endl;
-	std::cout << "   |   []      | (_) |   |    (_||_)    |   | (_) |       []  |" << std::endl;
-	std::cout << "   |           |     |   |     (||)     |   |     |           |" << std::endl;
-	std::cout << "   |           |     |   |      ||      |   |     |           |" << std::endl;
-	std::cout << " /''           |     |   |o     ||     o|   |     |           '' " << std::endl;
-	std::cout << "[_____________[_______]--'------''------'--[_______]_____________]" << std::endl << std::endl << std::endl << std::endl;
+	////background story
+	//std::cout << "   / |                                                       /|" << std::endl;
+	//std::cout << "  |  |                                                      | |" << std::endl;
+	//std::cout << "/---- |                                                   /----|" << std::endl;
+	//std::cout << "[______]                                                 [______]" << std::endl;
+	//std::cout << " |    |         _____                        _____        |    |" << std::endl;
+	//std::cout << "|[]  |        [     ]                      [     ]        |  []|" << std::endl;
+	//std::cout << "|    |       [_______][ ][ ][ ][][ ][ ][ ][_______]       |    |" << std::endl;
+	//std::cout << " |    [ ][ ][ ]|     |  ,----------------,  |     |[ ][ ][ ]    |" << std::endl;
+	//std::cout << " |             |     |/'    ____..____    ' |     |             |" << std::endl;
+	//std::cout << "  |  []        |     |    /'    ||    '    |     |        []  /" << std::endl;
+	//std::cout << "   |      []   |     |   |o     ||     o|   |     |  []       |" << std::endl;
+	//std::cout << "   |           |  _  |   |     _||_     |   |  _  |           |" << std::endl;
+	//std::cout << "   |   []      | (_) |   |    (_||_)    |   | (_) |       []  |" << std::endl;
+	//std::cout << "   |           |     |   |     (||)     |   |     |           |" << std::endl;
+	//std::cout << "   |           |     |   |      ||      |   |     |           |" << std::endl;
+	//std::cout << " /''           |     |   |o     ||     o|   |     |           '' " << std::endl;
+	//std::cout << "[_____________[_______]--'------''------'--[_______]_____________]" << std::endl << std::endl << std::endl << std::endl;
 
-	consoletext.intro();
+	//consoletext.intro();
 
 	World gameWorld;
 	Character* hero = new Character;
@@ -114,11 +119,15 @@ int main()
 	bool SuperiorNotDefeated = true;
 	int tempcounter = 0;
 
+	bool HaveNotTalkedToBoss = true;
+	int tempcounter2 = 0;
+
 	while (hero->getHealth() != 0 && EnemyPtr[22] != NULL)
 	{
 		do
 		{
 			system("CLS");
+
 			gameWorld.updateWorldPositions(hero, &menu
 				, EnemyPtr[0], EnemyPtr[1], EnemyPtr[2]
 				, EnemyPtr[3], EnemyPtr[4], EnemyPtr[5]
@@ -182,6 +191,23 @@ int main()
 				dialogueHappening = true;
 				dialogueNum = 0;
 				hero->setX(18);
+			}
+
+			//check if player first time entered boss room
+			if (HaveNotTalkedToBoss == true && hero->getY() == 63 && (hero->getX() == 14 || hero->getX() == 15 || hero->getX() == 16))
+			{
+				HaveNotTalkedToBoss = false;
+				dialogueHappening = true;
+				dialogueNum = 5;
+				FinalBossCanMove = true;
+			}
+
+			// check if player tries to get out while fighting boss
+			if (HaveNotTalkedToBoss == false && hero->getY() == 62 && (hero->getX() == 14 || hero->getX() == 15 || hero->getX() == 16))
+			{
+				dialogueHappening = true;
+				dialogueNum = 0;
+				hero->setY(63);
 			}
 
 			if (!shopOpen)
@@ -721,30 +747,17 @@ int main()
 	}
 
 	system("CLS");
-	gameWorld.updateWorldPositions(hero, &menu
-		, EnemyPtr[0], EnemyPtr[1], EnemyPtr[2]
-		, EnemyPtr[3], EnemyPtr[4], EnemyPtr[5]
-		, EnemyPtr[6], EnemyPtr[7], EnemyPtr[8]
-		, EnemyPtr[9], EnemyPtr[10], EnemyPtr[11]
-		, EnemyPtr[12], EnemyPtr[13], EnemyPtr[14]
-		, EnemyPtr[15], EnemyPtr[16], EnemyPtr[17]
-		, EnemyPtr[18], EnemyPtr[19], EnemyPtr[20], choo, choo1, choo2, EnemyPtr[21], EnemyPtr[22]);
-	gameWorld.printWorld(hero, hostile);
-	hero->PrintStat();
 
 	// LOSE AND WIN CONDITIONS
 	//LOSE
 	if (hero->getHealth() == 0)
 	{
-		std::cout << std::endl << std::endl << "YOU LOSE" << std::endl << std::endl;
-		Sleep(1000);
-		system("pause");
+		consoletext.Dead();
 	}
+	//WIN
 	else if (EnemyPtr[22] == NULL)
 	{
-		std::cout << std::endl << std::endl << "YOU WIN" << std::endl << std::endl;
-		Sleep(1000);
-		system("pause");
+		consoletext.DefeatBoss();
 	}
 
 	return 0;
