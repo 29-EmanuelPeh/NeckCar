@@ -53,26 +53,26 @@ int main()
 	bool dialogueHappening = false;
 	int dialogueNum = 0;
 
-	////background story
-	//std::cout << "   / |                                                       /|" << std::endl;
-	//std::cout << "  |  |                                                      | |" << std::endl;
-	//std::cout << "/---- |                                                   /----|" << std::endl;
-	//std::cout << "[______]                                                 [______]" << std::endl;
-	//std::cout << " |    |         _____                        _____        |    |" << std::endl;
-	//std::cout << "|[]  |        [     ]                      [     ]        |  []|" << std::endl;
-	//std::cout << "|    |       [_______][ ][ ][ ][][ ][ ][ ][_______]       |    |" << std::endl;
-	//std::cout << " |    [ ][ ][ ]|     |  ,----------------,  |     |[ ][ ][ ]    |" << std::endl;
-	//std::cout << " |             |     |/'    ____..____    ' |     |             |" << std::endl;
-	//std::cout << "  |  []        |     |    /'    ||    '    |     |        []  /" << std::endl;
-	//std::cout << "   |      []   |     |   |o     ||     o|   |     |  []       |" << std::endl;
-	//std::cout << "   |           |  _  |   |     _||_     |   |  _  |           |" << std::endl;
-	//std::cout << "   |   []      | (_) |   |    (_||_)    |   | (_) |       []  |" << std::endl;
-	//std::cout << "   |           |     |   |     (||)     |   |     |           |" << std::endl;
-	//std::cout << "   |           |     |   |      ||      |   |     |           |" << std::endl;
-	//std::cout << " /''           |     |   |o     ||     o|   |     |           '' " << std::endl;
-	//std::cout << "[_____________[_______]--'------''------'--[_______]_____________]" << std::endl << std::endl << std::endl << std::endl;
+	//background story
+	std::cout << "   / |                                                       /|" << std::endl;
+	std::cout << "  |  |                                                      | |" << std::endl;
+	std::cout << "/---- |                                                   /----|" << std::endl;
+	std::cout << "[______]                                                 [______]" << std::endl;
+	std::cout << " |    |         _____                        _____        |    |" << std::endl;
+	std::cout << "|[]  |        [     ]                      [     ]        |  []|" << std::endl;
+	std::cout << "|    |       [_______][ ][ ][ ][][ ][ ][ ][_______]       |    |" << std::endl;
+	std::cout << " |    [ ][ ][ ]|     |  ,----------------,  |     |[ ][ ][ ]    |" << std::endl;
+	std::cout << " |             |     |/'    ____..____    ' |     |             |" << std::endl;
+	std::cout << "  |  []        |     |    /'    ||    '    |     |        []  /" << std::endl;
+	std::cout << "   |      []   |     |   |o     ||     o|   |     |  []       |" << std::endl;
+	std::cout << "   |           |  _  |   |     _||_     |   |  _  |           |" << std::endl;
+	std::cout << "   |   []      | (_) |   |    (_||_)    |   | (_) |       []  |" << std::endl;
+	std::cout << "   |           |     |   |     (||)     |   |     |           |" << std::endl;
+	std::cout << "   |           |     |   |      ||      |   |     |           |" << std::endl;
+	std::cout << " /''           |     |   |o     ||     o|   |     |           '' " << std::endl;
+	std::cout << "[_____________[_______]--'------''------'--[_______]_____________]" << std::endl << std::endl << std::endl << std::endl;
 
-	//consoletext.intro();
+	consoletext.intro();
 
 	World gameWorld;
 	Character* hero = new Character;
@@ -84,6 +84,7 @@ int main()
 	Chest* choo = new Chest;
 	Chest* choo1 = new Chest;
 	Chest* choo2 = new Chest;
+	Chest* choo3 = new Chest;
 	
 	Character* EnemyPtr[23] = { new Guards, new Guards , new Guards
 								,new Guards, new Guards , new Guards
@@ -106,7 +107,7 @@ int main()
 			, EnemyPtr[9], EnemyPtr[10], EnemyPtr[11]
 			, EnemyPtr[12], EnemyPtr[13], EnemyPtr[14]
 			, EnemyPtr[15], EnemyPtr[16], EnemyPtr[17]
-			, EnemyPtr[18], EnemyPtr[19], EnemyPtr[20], choo, choo1, choo2);
+			, EnemyPtr[18], EnemyPtr[19], EnemyPtr[20], choo, choo1, choo2, choo3);
 
 	// intro hint dialogue
 	dialogueHappening = true;
@@ -135,7 +136,7 @@ int main()
 				, EnemyPtr[9], EnemyPtr[10], EnemyPtr[11]
 				, EnemyPtr[12], EnemyPtr[13], EnemyPtr[14]
 				, EnemyPtr[15], EnemyPtr[16], EnemyPtr[17]
-				, EnemyPtr[18], EnemyPtr[19], EnemyPtr[20], choo, choo1, choo2, EnemyPtr[21], EnemyPtr[22]);
+				, EnemyPtr[18], EnemyPtr[19], EnemyPtr[20], choo, choo1, choo2, choo3, EnemyPtr[21], EnemyPtr[22]);
 
 			//check if first time talk to guards have not happened
 			if (HavenotTalkedToCastleGuards == true && ((hero->getX() == 14 || hero->getX() == 15 || hero->getX() == 16) && hero->getY() == 49))
@@ -146,7 +147,7 @@ int main()
 			}
 
 			//check if first time talk to superior
-			if (HavenoTalkedToSuperior == true && HavenotTalkedToCastleGuards == false && (hero->getX() == 19 && (hero->getY() == 1 || hero->getY() == 2 || hero->getY() == 3
+			if (HavenoTalkedToSuperior == true && HavenotTalkedToCastleGuards == false && (hero->getX() == 21 && (hero->getY() == 1 || hero->getY() == 2 || hero->getY() == 3
 				|| hero->getY() == 4 || hero->getY() == 5 || hero->getY() == 6
 				|| hero->getY() == 7 || hero->getY() == 8 || hero->getY() == 9
 				|| hero->getY() == 10 || hero->getY() == 11 || hero->getY() == 12
@@ -179,7 +180,7 @@ int main()
 			}
 
 			//check if player talk to superior when havent talk to guards
-			if (HavenotTalkedToCastleGuards == true && (hero->getX() == 19 && (hero->getY() == 1 || hero->getY() == 2 || hero->getY() == 3
+			if (HavenotTalkedToCastleGuards == true && (hero->getX() == 21 && (hero->getY() == 1 || hero->getY() == 2 || hero->getY() == 3
 				|| hero->getY() == 4 || hero->getY() == 5 || hero->getY() == 6
 				|| hero->getY() == 7 || hero->getY() == 8 || hero->getY() == 9
 				|| hero->getY() == 10 || hero->getY() == 11 || hero->getY() == 12
@@ -190,7 +191,7 @@ int main()
 			{
 				dialogueHappening = true;
 				dialogueNum = 0;
-				hero->setX(18);
+				hero->setX(20);
 			}
 
 			//check if player first time entered boss room
@@ -467,7 +468,7 @@ int main()
 					hero->setMoney(monei);
 					delete choo;
 					choo = NULL;
-					std::cout << "You opened a choo chest! You have earned " + std::to_string(monei) + "credits" << std::endl;
+					std::cout << "You opened a choo chest! You have earned " + std::to_string(monei) + " credits" << std::endl;
 					system("pause");
 				}
 				 else if (choo1 != NULL && (hero->getX() == choo1->getX() - 1 && hero->getY() == choo1->getY() ||
@@ -480,7 +481,7 @@ int main()
 					hero->setMoney(monei);
 					delete choo1;
 					choo1 = NULL;
-					std::cout << "You opened a choo chest! You have earned " + std::to_string(monei) + "credits" << std::endl;
+					std::cout << "You opened a choo chest! You have earned " + std::to_string(monei) + " credits" << std::endl;
 					system("pause");
 				}
 				 else if (choo2 != NULL && (hero->getX() == choo2->getX() - 1 && hero->getY() == choo2->getY() ||
@@ -493,7 +494,20 @@ int main()
 					hero->setMoney(monei);
 					delete choo2;
 					choo2 = NULL;
-					std::cout << "You opened a choo chest! You have earned " + std::to_string(monei) + "credits" << std::endl;
+					std::cout << "You opened a choo chest! You have earned " + std::to_string(monei) + " credits" << std::endl;
+					system("pause");
+				}
+				 else if (choo3 != NULL && (hero->getX() == choo3->getX() - 1 && hero->getY() == choo3->getY() ||
+					 hero->getX() == choo3->getX() && hero->getY() == choo3->getY() + 1 ||
+					 hero->getX() == choo3->getX() && hero->getY() == choo3->getY() - 1 ||
+					 hero->getX() == choo3->getX() + 1 && hero->getY() == choo3->getY()))
+				{
+					donezo = false;
+					int monei = choo3->open();
+					hero->setMoney(monei);
+					delete choo3;
+					choo3 = NULL;
+					std::cout << "You opened a choo chest! You have earned " + std::to_string(monei) + " credits" << std::endl;
 					system("pause");
 				}
 				 else
@@ -595,7 +609,7 @@ int main()
 									, EnemyPtr[9], EnemyPtr[10], EnemyPtr[11]
 									, EnemyPtr[12], EnemyPtr[13], EnemyPtr[14]
 									, EnemyPtr[15], EnemyPtr[16], EnemyPtr[17]
-									, EnemyPtr[18], EnemyPtr[19], EnemyPtr[20], choo, choo1, choo2, EnemyPtr[21], EnemyPtr[22]);
+									, EnemyPtr[18], EnemyPtr[19], EnemyPtr[20], choo, choo1, choo2, choo3, EnemyPtr[21], EnemyPtr[22]);
 
 								// checking if the spot is empty
 								if (gameWorld.world[EnemyPtr[i]->getX() + nig2][EnemyPtr[i]->getY()] != '.')
@@ -635,7 +649,7 @@ int main()
 									, EnemyPtr[9], EnemyPtr[10], EnemyPtr[11]
 									, EnemyPtr[12], EnemyPtr[13], EnemyPtr[14]
 									, EnemyPtr[15], EnemyPtr[16], EnemyPtr[17]
-									, EnemyPtr[18], EnemyPtr[19], EnemyPtr[20], choo, choo1, choo2, EnemyPtr[21], EnemyPtr[22]);
+									, EnemyPtr[18], EnemyPtr[19], EnemyPtr[20], choo, choo1, choo2, choo3, EnemyPtr[21], EnemyPtr[22]);
 
 								if (gameWorld.world[EnemyPtr[i]->getX()][EnemyPtr[i]->getY() + nig2] != '.')
 								{
@@ -671,7 +685,7 @@ int main()
 								, EnemyPtr[9], EnemyPtr[10], EnemyPtr[11]
 								, EnemyPtr[12], EnemyPtr[13], EnemyPtr[14]
 								, EnemyPtr[15], EnemyPtr[16], EnemyPtr[17]
-								, EnemyPtr[18], EnemyPtr[19], EnemyPtr[20], choo, choo1, choo2, EnemyPtr[21], EnemyPtr[22]);
+								, EnemyPtr[18], EnemyPtr[19], EnemyPtr[20], choo, choo1, choo2, choo3, EnemyPtr[21], EnemyPtr[22]);
 
 							bool Moved = false;
 							

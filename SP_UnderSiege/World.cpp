@@ -21,7 +21,7 @@ void World::init(Character* guard1, Character* guard2, Character* guard3
 	, Character* guard10, Character* guard11, Character* guard12
 	, Character* guard13, Character* guard14, Character* guard15
 	, Character* guard16, Character* guard17, Character* guard18
-	, Character* guard19, Character* guard20, Character* guard21, Chest* chest, Chest* chest1, Chest* chest2)
+	, Character* guard19, Character* guard20, Character* guard21, Chest* chest, Chest* chest1, Chest* chest2, Chest* chest3)
 {
 	guard1->setX(3); guard1->setY(4); guard2->setX(13); guard2->setY(9); guard3->setX(16); guard3->setY(16);
 	guard4->setX(27); guard4->setY(10); guard5->setX(27); guard5->setY(16); guard6->setX(1); guard6->setY(40);
@@ -33,6 +33,7 @@ void World::init(Character* guard1, Character* guard2, Character* guard3
 	chest->setX(24); chest->setY(43);
 	chest1->setX(6); chest1->setY(41);
 	chest2->setX(4); chest2->setY(24);
+	chest3->setX(3); chest3->setY(73);
 }
 
 void World::updateWorldPositions(Character* player, Shop* shopLocate
@@ -42,7 +43,7 @@ void World::updateWorldPositions(Character* player, Shop* shopLocate
 	, Character* guard10, Character* guard11, Character* guard12
 	, Character* guard13, Character* guard14, Character* guard15
 	, Character* guard16, Character* guard17, Character* guard18
-	, Character* guard19, Character* guard20, Character* guard21, Chest* chest, Chest* chest1, Chest* chest2, Character* miniboss, Character* boss)
+	, Character* guard19, Character* guard20, Character* guard21, Chest* chest, Chest* chest1, Chest* chest2, Chest* chest3, Character* miniboss, Character* boss)
 {
 	for (int x = 0; x < 31; x++)
 	{
@@ -215,6 +216,10 @@ void World::updateWorldPositions(Character* player, Shop* shopLocate
 			else if (chest2 != NULL && x == chest2->getX() && y == chest2->getY())
 			{
 				world[x][y] = chest2->getchestIcon();
+			}
+			else if (chest3 != NULL && x == chest3->getX() && y == chest3->getY())
+			{
+			world[x][y] = chest3->getchestIcon();
 			}
 			else if (miniboss != NULL && x == miniboss->getX() && y == miniboss->getY())
 			{
