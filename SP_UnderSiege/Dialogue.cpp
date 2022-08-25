@@ -81,6 +81,8 @@ void Dialogue::MeetBoss()
 
     slowPrint("RUEBEN: I finally found you after all these years, I also had to pay your friend a little visit.", 10); std::cout << std::endl << std::endl;
 
+    slowPrint("RAIF: RAAAAAAA!!!", 10); std::cout << std::endl << std::endl;
+
     system("pause");
 }
 
