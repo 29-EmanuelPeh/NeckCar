@@ -8,7 +8,8 @@ private:
 	char dialogue;
 	char choice;
 public:
-	void notallowed();
+	void LeaveBossFight();
+	void TalkToSuperiorBeforeCastleGuards();
 	void intro();
 	void introHint();
 	void CastleGuardTalk();

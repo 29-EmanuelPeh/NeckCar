@@ -13,9 +13,25 @@ void slowPrint(std::string textToPrint, int speed)
     };
 }
 
-void Dialogue::notallowed()
+void Dialogue::LeaveBossFight()
 {
-    slowPrint("I don't need to go here yet.", 10);
+    HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+
+    SetConsoleTextAttribute(h, 0x03);
+    slowPrint("I have to kill him first.", 10);
+    SetConsoleTextAttribute(h, 0x0f);
+
+    std::cout << std::endl << std::endl;
+    system("pause");
+}
+
+void Dialogue::TalkToSuperiorBeforeCastleGuards()
+{
+    HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+
+    SetConsoleTextAttribute(h, 0x03);
+    slowPrint("I should go to the Castle first.", 10);
+    SetConsoleTextAttribute(h, 0x0f);
 
     std::cout << std::endl << std::endl;
     system("pause");
@@ -37,10 +53,10 @@ void Dialogue::introHint()
 {
     HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
 
-    slowPrint("(It's a good idea to lay low for now. The Guards will not attack me, but I should still be careful. I should check out the Castle first.)", 10); std::cout << std::endl << std::endl;
+    slowPrint("(It's a good idea to lay low for now. The Guards will not attack me, but I should still be careful. I should check out the ", 10); SetConsoleTextAttribute(h, 0x03); slowPrint("Castle", 10); SetConsoleTextAttribute(h, 0x0f); slowPrint(" first.)", 10); std::cout << std::endl << std::endl;
 
     SetConsoleTextAttribute(h, 0x03);
-    slowPrint("(Guards are not hostile to you and cannot be attacked.)", 10); std::cout << std::endl << std::endl;
+    slowPrint("(Guards are not hostile to you and cannot be attacked.)", 10); Sleep(500); std::cout << std::endl << std::endl;
     SetConsoleTextAttribute(h, 0x0f);
 
     system("pause");
@@ -78,11 +94,15 @@ void Dialogue::MeetSuperiorFirstTime()
 
 void Dialogue::BeatSuperiorFirstTime()
 {
+    HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+
     slowPrint("BRYAN: Arghh!", 50); Sleep(1000); slowPrint(" I-I remember you now, why are you doing this?!", 50); std::cout << std::endl << std::endl;
 
     slowPrint("RUEBEN: ", 10); slowPrint(".....", 500); Sleep(1000); slowPrint("One down, one to go.", 50); Sleep(1000); std::cout << std::endl << std::endl;
 
+    SetConsoleTextAttribute(h, 0x03);
     slowPrint("(It's time to find Raif at the Castle.)", 10); std::cout << std::endl << std::endl;
+    SetConsoleTextAttribute(h, 0x0f);
 
     system("pause");
 }

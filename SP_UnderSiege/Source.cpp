@@ -166,7 +166,7 @@ int main()
 			if (HavenoTalkedToSuperior == false && HavenotTalkedToCastleGuards == false && SuperiorNotDefeated == true && ((hero->getX() == 14 || hero->getX() == 15 || hero->getX() == 16) && hero->getY() == 25))
 			{
 				dialogueHappening = true;
-				dialogueNum = 0;
+				dialogueNum = 7;
 				hero->setY(24);
 			}
 
@@ -190,7 +190,7 @@ int main()
 				|| hero->getY() == 22 || hero->getY() == 23 || hero->getY() == 24)))
 			{
 				dialogueHappening = true;
-				dialogueNum = 0;
+				dialogueNum = 8;
 				hero->setX(20);
 			}
 
@@ -207,7 +207,7 @@ int main()
 			if (HaveNotTalkedToBoss == false && hero->getY() == 62 && (hero->getX() == 14 || hero->getX() == 15 || hero->getX() == 16))
 			{
 				dialogueHappening = true;
-				dialogueNum = 0;
+				dialogueNum = 7;
 				hero->setY(63);
 			}
 
@@ -226,9 +226,6 @@ int main()
 					// type of dialogue to play
 					switch (dialogueNum)
 					{
-					case 0:
-						consoletext.notallowed();
-						break;
 					case 1:
 						consoletext.introHint();
 						break;
@@ -246,6 +243,12 @@ int main()
 						break;
 					case 6:
 						consoletext.DefeatBoss();
+						break;
+					case 7:
+						consoletext.LeaveBossFight();
+						break;
+					case 8:
+						consoletext.TalkToSuperiorBeforeCastleGuards();
 						break;
 					}
 
